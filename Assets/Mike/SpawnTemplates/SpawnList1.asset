@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e7bfefe0239da459ddd45e1ddbf4e1, type: 3}
   m_Name: SpawnList1
   m_EditorClassIdentifier: 
-  youngEnemiesToSpawn: 0
-  oldEnemiesToSpawn: 0
-  enemySpawnDelay: 0
+  youngEnemiesToSpawn: 5
+  oldEnemiesToSpawn: 3
+  enemySpawnDelay: 1
