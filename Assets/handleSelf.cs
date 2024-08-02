@@ -9,11 +9,13 @@ public class handleSelf : MonoBehaviour
 
     private NavMeshAgent agent;
     public Transform target;
+    public Transform pl;
     public bool isPerformingAction = false;
     public float countdown;
     // Start is called before the first frame update
     void Start()
     {
+    
     agent = gameObject.GetComponent<NavMeshAgent>(); 
     countdown = 4f;
     }
@@ -66,7 +68,7 @@ else
             break;
     }}
     }
-    HandleCurrentState("Wander");
+   // HandleCurrentState("Wander");
     break;
     case "Wander":
     isPerformingAction = true;
@@ -76,7 +78,8 @@ else
     break;
 
     case "Rush":    
-
+    isPerformingAction = true;
+    agent.destination = pl.position; 
     break;
     
 
