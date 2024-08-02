@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cover Attach Point
+  - Enemy
+  - Barrier
   layers:
   - Default
   - TransparentFX

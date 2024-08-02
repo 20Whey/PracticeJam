@@ -12,13 +12,12 @@ public class findPlayerDirection : MonoBehaviour
     {
     Player = GameObject.Find("Player").transform;
     }
-
     // Update is called once per frame
-   void FixedUpdate() {
+   void Update () {
    if(Physics.Raycast(gameObject.transform.position, Player.position, 50f, layer)){
-    gameObject.transform.GetChild(0).gameObject.SetActive(false);
+    gameObject.transform.GetChild(0).gameObject.SetActive(true);
     } else {
-    gameObject.transform.GetChild(0).gameObject.SetActive(true);  
+    gameObject.transform.GetChild(0).gameObject.SetActive(false);  
         }
     }
 }
