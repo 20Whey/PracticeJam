@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Javi/Scripts/Scenes/MainMenu.unity
+    path: Assets/Javi/MenusSystem/Scenes/MainMenu.unity
     guid: 687dd7ce7a4768847947a4dbc47bf8fb
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: aae84e1a08e25f54d93249199a502c44
+  - enabled: 1
+    path: Assets/Javi/MenusSystem/Scenes/LoadingScene.unity
+    guid: ffb86e6fd964a75438f119e1739c65a5
+  - enabled: 1
+    path: Assets/Javi/MenusSystem/Scenes/OptionsMenu.unity
+    guid: 85973b9160fb694458ae7ad128161201
   m_configObjects: {}
