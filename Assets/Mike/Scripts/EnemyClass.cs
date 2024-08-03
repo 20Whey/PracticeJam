@@ -14,8 +14,6 @@ public class EnemyClass : MonoBehaviour
 	public float accuracy;
 
 	public EnemyAge enemyAge;
-	public GameObject youngPrefab;
-	public GameObject oldPrefab;
 	private EnemyManager enemyManager;
 
 	public enum EnemyAge
@@ -56,11 +54,14 @@ public class EnemyClass : MonoBehaviour
 		oldAge += damage;
 		if(oldAge >= maxAge)
 		{
-			if(enemyAge != EnemyAge.Old)
+			if (enemyAge != EnemyAge.Old)
 			{
-				ObjectPoolManager.SpawnObject(oldPrefab, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+				enemyManager.SwitchObject(gameObject, "old");
 			}
-			ObjectPoolManager.ReturnObjectToPool(gameObject);
+			else
+			{
+				enemyManager.SwitchObject(gameObject, "oldRD");
+			}
 			enemyManager.enemies.Remove(gameObject);
 		}
 	}
@@ -72,9 +73,12 @@ public class EnemyClass : MonoBehaviour
 		{
 			if (enemyAge != EnemyAge.Young)
 			{
-				ObjectPoolManager.SpawnObject(youngPrefab, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+				enemyManager.SwitchObject(gameObject, "young");
 			}
-			ObjectPoolManager.ReturnObjectToPool(gameObject);
+			else
+			{
+				enemyManager.SwitchObject(gameObject, "youngRD");
+			}
 			enemyManager.enemies.Remove(gameObject);
 		}
 	}

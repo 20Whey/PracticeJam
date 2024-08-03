@@ -75,11 +75,6 @@ public class ObjectPoolManager : MonoBehaviour
 			spawnableObject.transform.rotation = spawnRotation;
 			pool.inactiveObjects.Remove(spawnableObject);
 			spawnableObject.SetActive(true);
-
-			if(poolType == PoolType.Enemies)
-			{
-				objectToSpawn.GetComponent<OldEnemy>().oldAge = 0;
-			}
 		}
 
 		return spawnableObject;
