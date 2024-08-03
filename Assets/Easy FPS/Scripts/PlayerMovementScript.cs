@@ -16,6 +16,8 @@ public class PlayerMovementScript : MonoBehaviour
     public float jumpForce = 500;
     [Tooltip("Position of the camera inside the player")]
     [HideInInspector] public Vector3 cameraPosition;
+    public int currentHealth;
+    [SerializeField] private int maxHealth = 100;
 
     /*
 	 * Getting the Players rigidbody component.
@@ -23,6 +25,7 @@ public class PlayerMovementScript : MonoBehaviour
 	 */
     void Awake()
     {
+        currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
         cameraMain = transform.Find("Main Camera").transform;
         bulletSpawn = cameraMain.Find("BulletSpawn").transform;
@@ -386,11 +389,18 @@ public class PlayerMovementScript : MonoBehaviour
     }
     private GameObject myBloodEffect;
 
-
     [Header("Player SOUNDS")]
     private EventInstance runSound;
     private EventInstance walkSound;
     private EventInstance idleSound;
 
+    public void playerTakeDamage(int damage)
+	{
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
+        if(currentHealth <= 0)
+		{ 
+		}
+    }
 }
 

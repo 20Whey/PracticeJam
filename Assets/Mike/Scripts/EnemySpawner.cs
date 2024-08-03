@@ -24,7 +24,6 @@ public class EnemySpawner : MonoBehaviour
     void Awake()
     {
         enemyManager = FindObjectOfType<EnemyManager>();
-        enemyManager.enemies.Add(gameObject);
     }
 
     void Start()

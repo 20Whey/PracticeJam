@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1723845101655329800}
   - component: {fileID: 7034259650761720344}
   - component: {fileID: 8382917704784816514}
-  - component: {fileID: 4466607955855008691}
+  - component: {fileID: -4243823503829440937}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4466607955855008691
+--- !u!114 &-4243823503829440937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,4 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletRB: {fileID: 8382917704784816514}
-  bulletSpeed: 5
+  bulletSpeed: 10
+  bulletDamage: 5
+  damageType: 2
+  destroyTime: 3

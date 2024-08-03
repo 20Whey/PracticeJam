@@ -1207,7 +1207,7 @@ MonoBehaviour:
   rotationLagTime: 0
   forwardRotationAmount: {x: 1, y: 1}
   bulletSpawnPlace: {fileID: 0}
-  bullet: {fileID: 128836, guid: c9e619a669d974fd28b5c89e43f2bce2, type: 3}
+  bullet: {fileID: 7159124843199271953, guid: 78e8e19ddda91e3459b1d75e4e2a5ec2, type: 3}
   roundsPerSecond: 100
   recoilAmount_z: 0.04
   recoilAmount_x: 0.04
@@ -1268,6 +1268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBulletsFired: 5
+  overheatCooldownTime: 5
 --- !u!1 &142906
 GameObject:
   m_ObjectHideFlags: 0

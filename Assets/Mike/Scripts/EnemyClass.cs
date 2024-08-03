@@ -13,11 +13,14 @@ public class EnemyClass : MonoBehaviour
 	public float movementSpeed;
 	public float accuracy;
 	public float bulletspeed;
+	[SerializeField] private float shootingCooldown = 5;
+	private float cooldownTimer;
 
 	public EnemyAge enemyAge;
 	public GameObject bulletPrefab;
 	public Transform bulletSpawnPoint;
 	public Transform playerPosition;
+	private GameObject enemyParent;
 	private EnemyManager enemyManager;
 
 	public enum EnemyAge
@@ -29,10 +32,11 @@ public class EnemyClass : MonoBehaviour
 
 	void Awake()
 	{
+		enemyParent = gameObject.transform.parent.gameObject;
 		enemyManager = FindObjectOfType<EnemyManager>();
 		playerPosition = FindObjectOfType<PlayerMovementScript>().gameObject.transform;
 
-		enemyManager.enemies.Add(gameObject);
+		enemyManager.enemies.Add(enemyParent);
 	}
 
 	void OnEnable()
@@ -45,6 +49,7 @@ public class EnemyClass : MonoBehaviour
 	{
 		Vector3 playerPos = new Vector3(playerPosition.position.x, gameObject.transform.position.y, playerPosition.position.z);
 		transform.LookAt(playerPos);
+		DealDamage();
 	}
 
 	public void TakeDamage(int damage, string damageType)
@@ -62,9 +67,24 @@ public class EnemyClass : MonoBehaviour
 		enemyManager.checkWaveClear();
 	}
 
-	public void FireBullet()
+	public void DealDamage()
 	{
-		ObjectPoolManager.SpawnObject(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation, ObjectPoolManager.PoolType.Projectiles);
+		if (enemyAge == EnemyAge.Old)
+		{
+			cooldownTimer -= Time.deltaTime;
+			if (cooldownTimer > 0) return;
+			cooldownTimer = shootingCooldown;
+
+			ObjectPoolManager.SpawnObject(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation, ObjectPoolManager.PoolType.Projectiles);
+		}
+		if (enemyAge == EnemyAge.Young)
+		{
+			cooldownTimer -= Time.deltaTime;
+			if (cooldownTimer > 0) return;
+			cooldownTimer = shootingCooldown;
+
+			//melee attack
+		}
 	}
 
 	public void AgeEnemy(int damage)
@@ -74,13 +94,13 @@ public class EnemyClass : MonoBehaviour
 		{
 			if (enemyAge != EnemyAge.Old)
 			{
-				enemyManager.SwitchObject(gameObject, "old");
+				enemyManager.SwitchObject(enemyParent, "old");
 			}
 			else
 			{
-				enemyManager.SwitchObject(gameObject, "oldRD");
+				enemyManager.SwitchObject(enemyParent, "oldRD");
 			}
-			enemyManager.enemies.Remove(gameObject);
+			enemyManager.enemies.Remove(enemyParent);
 		}
 	}
 
@@ -91,13 +111,13 @@ public class EnemyClass : MonoBehaviour
 		{
 			if (enemyAge != EnemyAge.Young)
 			{
-				enemyManager.SwitchObject(gameObject, "young");
+				enemyManager.SwitchObject(enemyParent, "young");
 			}
 			else
 			{
-				enemyManager.SwitchObject(gameObject, "youngRD");
+				enemyManager.SwitchObject(enemyParent, "youngRD");
 			}
-			enemyManager.enemies.Remove(gameObject);
+			enemyManager.enemies.Remove(enemyParent);
 		}
 	}
 }
