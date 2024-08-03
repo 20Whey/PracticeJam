@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject oldEnemyPrefab;
-    public GameObject youngEnemyPrefab;
     public GameObject[] enemyArray;
     public Transform spawnArea;
     public int maxEnemyCount;
@@ -14,12 +12,19 @@ public class EnemySpawner : MonoBehaviour
     System.Random random = new System.Random();
 
     public SpawnManagerScriptableObj spawnTemplate;
+    private EnemyManager enemyManager;
 
     void OnDrawGizmos()
     {
         // Draw a yellow cube at the transform position
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, new Vector3(spawnArea.localScale.x, spawnArea.localScale.y, spawnArea.localScale.z));
+    }
+
+    void Awake()
+    {
+        enemyManager = FindObjectOfType<EnemyManager>();
+        enemyManager.enemies.Add(gameObject);
     }
 
     void Start()
@@ -34,14 +39,14 @@ public class EnemySpawner : MonoBehaviour
         while (youngEnemyCount < maxEnemyCount)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            ObjectPoolManager.SpawnObject(youngEnemyPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+            ObjectPoolManager.SpawnObject(enemyManager.youngPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);
             youngEnemyCount += 1;
         }
         while (oldEnemyCount < maxEnemyCount)
         {
             Vector3 spawnPosition = GetRandomSpawnPosition();
-            ObjectPoolManager.SpawnObject(oldEnemyPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+            ObjectPoolManager.SpawnObject(enemyManager.oldPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);
             oldEnemyCount += 1;
         }
