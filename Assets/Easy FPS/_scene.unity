@@ -378,17 +378,17 @@ MonoBehaviour:
     Path: event:/Player Movement/Jump
   <runSound>k__BackingField:
     Guid:
-      Data1: -966328283
-      Data2: 1126046497
-      Data3: 921980327
-      Data4: 1776453785
+      Data1: 276956526
+      Data2: 1274564073
+      Data3: -1345342839
+      Data4: 683144027
     Path: event:/Player Movement/Running
   <walkSound>k__BackingField:
     Guid:
-      Data1: -284185514
-      Data2: 1321264467
-      Data3: -1290315888
-      Data4: -1590979006
+      Data1: -780674943
+      Data2: 1288241900
+      Data3: 1870120832
+      Data4: -2041319249
     Path: event:/Player Movement/Walking
   <idleSound>k__BackingField:
     Guid:
