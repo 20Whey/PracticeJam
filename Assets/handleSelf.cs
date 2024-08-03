@@ -34,6 +34,8 @@ else
     countdown = 4f;
 
 }
+    pl = GameObject.Find("PlayerCharacter").transform;
+
 
        // if(Vector3.Distance(agent.transform.position, target.position) < 0.2f) isPerformingAction = false;
 
@@ -41,16 +43,17 @@ else
 
 
     public List<GameObject> findSortedBarriers(){
-    List<GameObject> toSort = GameObject.FindGameObjectsWithTag("Barrier").ToList();
+    List<GameObject> toSort = GameObject.FindGameObjectsWithTag("Barr").ToList();
         return toSort.OrderBy(Barrier => Vector3.Distance(gameObject.transform.position, Barrier.transform.position)).ToList();
     }
    private List<Transform> getAllChilderen(GameObject parent, int num){
     List<Transform> lsOfChild = new List<Transform>();
-   for(int i = 0; i <  num; i++){
+   for(int i = 0; i < num; i++){
     lsOfChild.Add(parent.transform.GetChild(i));
+   // Debug.Log(parent.transform.GetChild(i));
    }
     return lsOfChild.OrderBy(child => Vector3.Distance(gameObject.transform.position, child.position)).ToList();
-    }
+}
 
 
     private void HandleCurrentState(string State){
@@ -59,12 +62,14 @@ else
    isPerformingAction = true;
    List<GameObject> nearbyBarriers = findSortedBarriers();
    for(var i = 0; i < nearbyBarriers.Count; i++){
-    foreach(Transform child in getAllChilderen(nearbyBarriers[i], 4)){
+    List<Transform> getChildren = getAllChilderen(nearbyBarriers[i], 4);
+    foreach(Transform child in getChildren){
+       // Debug.Log(child.gameObject.name);
     GameObject Infant = child.GetChild(0).gameObject;
         if (Infant.activeSelf != false && child.GetComponent<Slot>().currentUser == null){
             //MoveToBarrier and start taking cover
             agent.destination = Infant.transform.position;
-            Infant.transform.parent.GetComponent<Slot>().currentUser = gameObject;
+            child.GetComponent<Slot>().currentUser = gameObject;
             break;
     }}
     }

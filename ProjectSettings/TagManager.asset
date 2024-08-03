@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Enemy
   - Barrier
+  - SecondCamera
+  - BulletSpawn
+  - Weapon
+  - LevelPart
+  - Dummie
+  - Barr
   layers:
   - Default
   - TransparentFX

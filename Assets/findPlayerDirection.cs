@@ -10,7 +10,7 @@ public class findPlayerDirection : MonoBehaviour
     
     void Awake()
     {
-    Player = GameObject.Find("Player").transform;
+    Player = GameObject.Find("PlayerCharacter").transform;
     }
     // Update is called once per frame
    void Update () {
