@@ -14,16 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Player Movement/Running
   Guid:
-    Data1: -966328283
-    Data2: 1126046497
-    Data3: 921980327
-    Data4: 1776453785
+    Data1: 276956526
+    Data2: 1274564073
+    Data3: -1345342839
+    Data4: 683144027
   Banks:
   - {fileID: 1391499871713269574}
   IsStream: 1
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 8550107226257980930}
   MinDistance: 1
   MaxDistance: 20
   Length: 10136
@@ -42,7 +43,7 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638582997635268241
+  lastModified: 638583028669509467
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -100,7 +101,7 @@ MonoBehaviour:
   - {fileID: -7922379753148808996}
   StringsBanks:
   - {fileID: 333134825432648477}
-  cacheTime: 638583017811227769
+  cacheTime: 638583029061425268
   cacheVersion: 131617
 --- !u!114 &333134825432648477
 MonoBehaviour:
@@ -117,7 +118,7 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638583017811186736
+  lastModified: 638583028669534810
   FileSizes:
   - Name: Desktop
     Value: 986
@@ -136,14 +137,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Player Movement/Walking
   Guid:
-    Data1: -284185514
-    Data2: 1321264467
-    Data3: -1290315888
-    Data4: -1590979006
+    Data1: -780674943
+    Data2: 1288241900
+    Data3: 1870120832
+    Data4: -2041319249
   Banks:
   - {fileID: 1391499871713269574}
   IsStream: 1
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters:
   - {fileID: 7504837746730023369}
@@ -165,10 +166,10 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638583017811227769
+  lastModified: 638583029061425268
   FileSizes:
   - Name: Desktop
-    Value: 622496
+    Value: 795936
   Exists: 1
 --- !u!114 &7504837746730023369
 MonoBehaviour:
@@ -221,3 +222,27 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2000
+--- !u!114 &8550107226257980930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Running/Chance
+  m_EditorClassIdentifier: 
+  Name: Chance
+  StudioPath: 
+  Min: 0
+  Max: 4
+  Default: 0
+  ID:
+    data1: 343435115
+    data2: 2536983009
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1

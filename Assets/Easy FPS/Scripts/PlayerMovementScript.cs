@@ -1,4 +1,5 @@
 ﻿using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
@@ -94,8 +95,8 @@ public class PlayerMovementScript : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * jumpForce);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.jumpSound, transform.position);
 
-            walkSound.stop(STOP_MODE.ALLOWFADEOUT);
-            runSound.stop(STOP_MODE.ALLOWFADEOUT);
+            walkSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            runSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
     /*
@@ -119,35 +120,70 @@ public class PlayerMovementScript : MonoBehaviour
 	*/
     void WalkingSound()
     {
+        Vector3 soundOffset = Vector3.down;
+
+        walkSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position + soundOffset));
+        runSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position + soundOffset));
+
+        float walkVolume = 1.0f;
+        float runVolume = 0.0f;
+        float fadeDuration = 1.0f; // Duration of the fade effect
+
         if (RayCastGrounded()) { //for walk sounsd using this because suraface is not straigh			
             if (currentSpeed > 0.4f) {
                 PLAYBACK_STATE walkPlaybackState;
                 PLAYBACK_STATE runPlaybackState;
-                if (maxSpeed == 3) {
 
-                    walkSound.getPlaybackState(out walkPlaybackState);
+                walkSound.getPlaybackState(out walkPlaybackState);
+                runSound.getPlaybackState(out runPlaybackState);
+
+                if (maxSpeed == 3) {
 
                     if (walkPlaybackState.Equals(PLAYBACK_STATE.STOPPED)) {
                         walkSound.setParameterByName("Chance", Random.Range(0f, 4f));
                         walkSound.start();
-                        runSound.stop(STOP_MODE.ALLOWFADEOUT);
                     }
+                    if (runPlaybackState != PLAYBACK_STATE.STOPPED) {
+                        runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 0.0f, Time.deltaTime / fadeDuration));
+                        walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 1.0f, Time.deltaTime / fadeDuration));
 
+                        if (runVolume == 0.0f) {
+                            runSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        }
+                    }
                 } else if (maxSpeed == 5) {
-
-                    runSound.getPlaybackState(out runPlaybackState);
 
                     if (runPlaybackState.Equals(PLAYBACK_STATE.STOPPED)) {
                         runSound.start();
-                        walkSound.stop(STOP_MODE.ALLOWFADEOUT);
+                    }
+                    if (walkPlaybackState != PLAYBACK_STATE.STOPPED) {
+                        walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 0.0f, Time.deltaTime / fadeDuration));
+                        runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 1.0f, Time.deltaTime / fadeDuration));
+
+                        if (walkVolume == 0.0f) {
+                            walkSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        }
+                    } else {
+                        walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 0.0f, Time.deltaTime / fadeDuration));
+                        runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 0.0f, Time.deltaTime / fadeDuration));
+
+                        if (walkVolume == 0.0f && runVolume == 0.0f) {
+                            walkSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                            runSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        }
                     }
                 } else {
-                    walkSound.stop(STOP_MODE.ALLOWFADEOUT);
-                    runSound.stop(STOP_MODE.ALLOWFADEOUT);
+                    walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 0.0f, Time.deltaTime / fadeDuration));
+                    runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 0.0f, Time.deltaTime / fadeDuration));
+
+                    if (walkVolume == 0.0f && runVolume == 0.0f) {
+                        walkSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        runSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                    }
                 }
             } else {
-                walkSound.stop(STOP_MODE.ALLOWFADEOUT);
-                runSound.stop(STOP_MODE.ALLOWFADEOUT);
+                walkSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                runSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
         }
     }
