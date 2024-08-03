@@ -18,6 +18,7 @@ public class handleSelf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        countdown = 4f;
     chosenCoverPoint = null;
     agent = gameObject.GetComponent<NavMeshAgent>(); 
     }
@@ -28,6 +29,17 @@ public class handleSelf : MonoBehaviour
 
 
     pl = GameObject.Find("PlayerCharacter").transform;
+
+
+    if (countdown > 0){
+        countdown -= Time.deltaTime;
+      //  isPerformingAction = false;
+    } else {
+    isPerformingAction = false;
+        
+    }
+
+
 
     if(coverCountDown != null) if (coverCountDown > 0){
     coverCountDown -= Time.deltaTime;
@@ -61,6 +73,7 @@ public class handleSelf : MonoBehaviour
     switch(State){
    case "SCover": 
    isPerformingAction = true;
+   //agent.destination = transform.position;
    List<GameObject> nearbyBarriers = findSortedBarriers();
    for(var i = 0; i < nearbyBarriers.Count; i++){
     List<Transform> getChildren = getAllChilderen(nearbyBarriers[i], 4);
@@ -81,7 +94,7 @@ public class handleSelf : MonoBehaviour
     HandleCurrentState("Wander");
     break;
     case "Wander":
-    isPerformingAction = false;
+    isPerformingAction = true;
     Vector3 point = (Random.insideUnitSphere * 5 ) + gameObject.transform.position;
     agent.destination = point;
     //HandleCurrentState("SCover");
@@ -92,9 +105,6 @@ public class handleSelf : MonoBehaviour
     isPerformingAction = true;
     agent.destination = pl.position; 
     if(lastState == "SCover"){
-    
-
-
     }
     lastState = "Rush";
     
@@ -102,8 +112,13 @@ public class handleSelf : MonoBehaviour
     
     case "Flee":
     isPerformingAction = true;
-    //tmp
-    agent.destination = -pl.position;
+    //get where I'm pointing and move the opposing way
+    
+    Vector3 dtp = transform.position - pl.position;
+    Vector3 np = gameObject.transform.position + dtp;    //Vector3.Distance(transform.position, pl.position);
+    
+    
+    agent.destination = np + new Vector3(np.x, 0, np.z);
     lastState = "Flee";
     break;
 
