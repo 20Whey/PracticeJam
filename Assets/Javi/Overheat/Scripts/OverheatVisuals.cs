@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class OverheatVisuals : MonoBehaviour {
@@ -28,9 +29,11 @@ public class OverheatVisuals : MonoBehaviour {
         overheatWeapon.OnBulletFired -= OverheatWeapon_OnBulletFired;
     }
 
-    private void OverheatWeapon_OnBulletFired(int currentBullets) {
+    private void OverheatWeapon_OnBulletFired(int currentBullets, float time) {
+
         float newZRotation = rotationInterval * currentBullets;
 
-        transform.localRotation = Quaternion.Euler(initialXRotation, initialYRotation, newZRotation);
+        Vector3 targetRotation = new(initialXRotation, initialYRotation, newZRotation);
+        transform.DOLocalRotate(targetRotation, time, RotateMode.Fast);
     }
 }

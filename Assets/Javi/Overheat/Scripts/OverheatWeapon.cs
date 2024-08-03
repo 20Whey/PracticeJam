@@ -7,7 +7,7 @@ public enum BulletType { Age, Deage }
 
 public class OverheatWeapon : MonoBehaviour {
 
-    public event Action<int> OnBulletFired;
+    public event Action<int, float> OnBulletFired;
     public event Action<BulletType> OnWeaponOverheated;
 
     [SerializeField] private int maxBulletsFired;
@@ -46,7 +46,7 @@ public class OverheatWeapon : MonoBehaviour {
             case BulletType.Age:
                 if (currentBulletsFired <= maxBulletsFired) {
                     currentBulletsFired++;
-                    OnBulletFired?.Invoke(currentBulletsFired);
+                    OnBulletFired?.Invoke(currentBulletsFired, 1f);
 
                     if (currentBulletsFired == maxBulletsFired) {
                         OnWeaponOverheated?.Invoke(bulletType);
@@ -58,7 +58,7 @@ public class OverheatWeapon : MonoBehaviour {
             case BulletType.Deage:
                 if (currentBulletsFired >= -maxBulletsFired) {
                     currentBulletsFired--;
-                    OnBulletFired?.Invoke(currentBulletsFired);
+                    OnBulletFired?.Invoke(currentBulletsFired, 1f);
 
                     if (currentBulletsFired == -maxBulletsFired) {
                         OnWeaponOverheated?.Invoke(bulletType);
@@ -73,10 +73,11 @@ public class OverheatWeapon : MonoBehaviour {
 
     IEnumerator OverheatCooldown(int seconds) {
         gun.ChangeOverheated(true);
-        yield return new WaitForSeconds(seconds);
 
         currentBulletsFired = 0;
-        OnBulletFired?.Invoke(currentBulletsFired);
+        OnBulletFired?.Invoke(currentBulletsFired, seconds);
+
+        yield return new WaitForSeconds(seconds);
 
         gun.ChangeOverheated(false);
     }
