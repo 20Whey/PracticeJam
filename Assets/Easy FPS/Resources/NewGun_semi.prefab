@@ -1146,6 +1146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 469018}
   - component: {fileID: 11400676}
+  - component: {fileID: 2912464639103225412}
   m_Layer: 8
   m_Name: NewGun_semi
   m_TagString: Weapon
@@ -1253,6 +1254,19 @@ MonoBehaviour:
   reloadAnimationName: Player_Reload
   aimingAnimationName: Player_AImpose
   meeleAnimationName: Character_Malee
+--- !u!114 &2912464639103225412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada4b79e68d5ee14c940c1e04802d0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBulletsFired: 5
 --- !u!1 &142906
 GameObject:
   m_ObjectHideFlags: 0
