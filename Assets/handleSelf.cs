@@ -53,7 +53,7 @@ else
     }
 
 
-    public void HandleCurrentState(string State){
+    private void HandleCurrentState(string State){
     switch(State){
    case "SCover": 
    isPerformingAction = true;

@@ -6,27 +6,9 @@ public class handleEnemies : MonoBehaviour
 {
     // Start is called before the first frame update
 
-public List<GameObject> enemies = new List<GameObject>();
+void Update(){
 
-void Update() {
+
     
 }
-
-public void makeADecision(GameObject current){
-var hf = current.GetComponent<handleSelf>();
-//var enC = current.GetComponent<Enemy>();
-/*
-switch(enC. )
-
-
-
-
-hf.HandleCurrentState()
-*/
-
-
-}
-
-
-
 }
