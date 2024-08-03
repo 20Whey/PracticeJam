@@ -17,6 +17,7 @@ public class EnemyClass : MonoBehaviour
 	public EnemyAge enemyAge;
 	public GameObject bulletPrefab;
 	public Transform bulletSpawnPoint;
+	public Transform playerPosition;
 	private EnemyManager enemyManager;
 
 	public enum EnemyAge
@@ -29,6 +30,8 @@ public class EnemyClass : MonoBehaviour
 	void Awake()
 	{
 		enemyManager = FindObjectOfType<EnemyManager>();
+		playerPosition = FindObjectOfType<PlayerMovementScript>().gameObject.transform;
+
 		enemyManager.enemies.Add(gameObject);
 	}
 
@@ -40,7 +43,8 @@ public class EnemyClass : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKeyDown("space")) { FireBullet(); }
+		Vector3 playerPos = new Vector3(playerPosition.position.x, gameObject.transform.position.y, playerPosition.position.z);
+		transform.LookAt(playerPos);
 	}
 
 	public void TakeDamage(int damage, string damageType)
