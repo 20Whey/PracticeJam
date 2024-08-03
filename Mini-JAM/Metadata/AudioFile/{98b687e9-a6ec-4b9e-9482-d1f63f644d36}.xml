@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{98b687e9-a6ec-4b9e-9482-d1f63f644d36}">
+		<property name="assetPath">
+			<value>Bullet/WEAPONS_SCI_FI_Shot_Bright_03.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.0429931972789115</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{249b3001-9136-4168-b7d6-4b55c1a86689}</destination>
+		</relationship>
+	</object>
+</objects>

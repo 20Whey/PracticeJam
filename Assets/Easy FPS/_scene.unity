@@ -397,6 +397,27 @@ MonoBehaviour:
       Data3: -1674794056
       Data4: 2015209973
     Path: event:/Player Movement/Idle
+  <hitMarkerSound>k__BackingField:
+    Guid:
+      Data1: -503601547
+      Data2: 1278250874
+      Data3: -586800494
+      Data4: -1738914413
+    Path: event:/Weapons/HitMarker
+  <bulletSound>k__BackingField:
+    Guid:
+      Data1: -1736825778
+      Data2: 1241643682
+      Data3: 816244396
+      Data4: -1587349541
+    Path: event:/Weapons/Shooting
+  <gaugeSound>k__BackingField:
+    Guid:
+      Data1: 538879392
+      Data2: 1074315453
+      Data3: -1668468588
+      Data4: 1409464411
+    Path: event:/Weapons/Gauge
 --- !u!1 &1097401645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 173116, guid: c391f12a928274acab8576bb6030641d, type: 3}

@@ -43,11 +43,120 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638583028669509467
+  lastModified: 638583117378621515
   FileSizes:
   - Name: Desktop
     Value: 1036
   Exists: 1
+--- !u!114 &-4214840473403172211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Gauge
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Gauge
+  Guid:
+    Data1: 538879392
+    Data2: 1074315453
+    Data3: -1668468588
+    Data4: 1409464411
+  Banks:
+  - {fileID: 1391499871713269574}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 7268238038644915898}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1156
+--- !u!114 &-4179086044949455669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/HitMarker
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/HitMarker
+  Guid:
+    Data1: -503601547
+    Data2: 1278250874
+    Data3: -586800494
+    Data4: -1738914413
+  Banks:
+  - {fileID: 1391499871713269574}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1101
+--- !u!114 &-3538615921162973525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Reload
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Reload
+  Guid:
+    Data1: 104100373
+    Data2: 1325215923
+    Data3: 468090279
+    Data4: 624164251
+  Banks:
+  - {fileID: 1391499871713269574}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1919832565742747024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Silence
+  m_EditorClassIdentifier: 
+  Path: event:/Silence
+  Guid:
+    Data1: -1613855124
+    Data2: 1201125982
+    Data3: 1060237189
+    Data4: -969482384
+  Banks:
+  - {fileID: 1391499871713269574}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-102314520881488818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,12 +205,17 @@ MonoBehaviour:
   - {fileID: -8833601084644796580}
   - {fileID: -102314520881488818}
   - {fileID: 8434326883333986804}
+  - {fileID: -1919832565742747024}
+  - {fileID: -3538615921162973525}
+  - {fileID: 8593561575588589265}
+  - {fileID: -4179086044949455669}
+  - {fileID: -4214840473403172211}
   EditorParameters: []
   MasterBanks:
   - {fileID: -7922379753148808996}
   StringsBanks:
   - {fileID: 333134825432648477}
-  cacheTime: 638583029061425268
+  cacheTime: 638583117379726185
   cacheVersion: 131617
 --- !u!114 &333134825432648477
 MonoBehaviour:
@@ -118,10 +232,10 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638583028669534810
+  lastModified: 638583117378631603
   FileSizes:
   - Name: Desktop
-    Value: 986
+    Value: 1260
   Exists: 1
 --- !u!114 &1111380428899991872
 MonoBehaviour:
@@ -166,10 +280,34 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638583029061425268
+  lastModified: 638583117379726185
   FileSizes:
   - Name: Desktop
-    Value: 795936
+    Value: 1137248
+  Exists: 1
+--- !u!114 &7268238038644915898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Gauge/GaugeMode
+  m_EditorClassIdentifier: 
+  Name: GaugeMode
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3708925297
+    data2: 2200117645
+  Type: 1
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &7504837746730023369
 MonoBehaviour:
@@ -246,3 +384,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &8593561575588589265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/Shooting
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/Shooting
+  Guid:
+    Data1: -1736825778
+    Data2: 1241643682
+    Data3: 816244396
+    Data4: -1587349541
+  Banks:
+  - {fileID: 1391499871713269574}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 10000
+  Length: 1234

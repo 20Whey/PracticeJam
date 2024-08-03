@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour
 {
     Rigidbody rb;
+    GunScript gS;
 
     [Tooltip("Current players speed")]
     public float currentSpeed;
@@ -104,17 +105,12 @@ public class PlayerMovementScript : MonoBehaviour
 	*/
     void Update()
     {
-
-
         Jumping();
 
         Crouching();
 
         WalkingSound();
-
-
-    }//end update
-
+    }
     /*
 	* Checks if player is grounded and plays the sound accorindlgy to his speed
 	*/
@@ -130,18 +126,21 @@ public class PlayerMovementScript : MonoBehaviour
         float fadeDuration = 1.0f; // Duration of the fade effect
 
         if (RayCastGrounded()) { //for walk sounsd using this because suraface is not straigh			
-            if (currentSpeed > 0.4f) {
-                PLAYBACK_STATE walkPlaybackState;
-                PLAYBACK_STATE runPlaybackState;
+            PLAYBACK_STATE walkPlaybackState;
+            PLAYBACK_STATE runPlaybackState;
+            PLAYBACK_STATE idlePlaybackState;
 
-                walkSound.getPlaybackState(out walkPlaybackState);
-                runSound.getPlaybackState(out runPlaybackState);
+            walkSound.getPlaybackState(out walkPlaybackState);
+            runSound.getPlaybackState(out runPlaybackState);
+            idleSound.getPlaybackState(out idlePlaybackState);
+            if (currentSpeed > 0.4f) {
 
                 if (maxSpeed == 3) {
 
                     if (walkPlaybackState.Equals(PLAYBACK_STATE.STOPPED)) {
                         walkSound.setParameterByName("Chance", Random.Range(0f, 4f));
                         walkSound.start();
+                        idleSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     }
                     if (runPlaybackState != PLAYBACK_STATE.STOPPED) {
                         runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 0.0f, Time.deltaTime / fadeDuration));
@@ -155,6 +154,7 @@ public class PlayerMovementScript : MonoBehaviour
 
                     if (runPlaybackState.Equals(PLAYBACK_STATE.STOPPED)) {
                         runSound.start();
+                        idleSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     }
                     if (walkPlaybackState != PLAYBACK_STATE.STOPPED) {
                         walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 0.0f, Time.deltaTime / fadeDuration));
@@ -166,6 +166,7 @@ public class PlayerMovementScript : MonoBehaviour
                     } else {
                         walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 0.0f, Time.deltaTime / fadeDuration));
                         runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 0.0f, Time.deltaTime / fadeDuration));
+                        idleSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 1.0f, Time.deltaTime / fadeDuration));
 
                         if (walkVolume == 0.0f && runVolume == 0.0f) {
                             walkSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
@@ -175,6 +176,11 @@ public class PlayerMovementScript : MonoBehaviour
                 } else {
                     walkSound.setParameterByName("Volume", Mathf.Lerp(walkVolume, 0.0f, Time.deltaTime / fadeDuration));
                     runSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 0.0f, Time.deltaTime / fadeDuration));
+                    idleSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 1.0f, Time.deltaTime / fadeDuration));
+
+                    if (idlePlaybackState.Equals(PLAYBACK_STATE.STOPPED)) {
+                        idleSound.start();
+                    }
 
                     if (walkVolume == 0.0f && runVolume == 0.0f) {
                         walkSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
@@ -184,6 +190,11 @@ public class PlayerMovementScript : MonoBehaviour
             } else {
                 walkSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 runSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                idleSound.setParameterByName("Volume", Mathf.Lerp(runVolume, 1.0f, Time.deltaTime / fadeDuration));
+
+                if (idlePlaybackState.Equals(PLAYBACK_STATE.STOPPED)) {
+                    idleSound.start();
+                }
             }
         }
     }
@@ -362,12 +373,8 @@ public class PlayerMovementScript : MonoBehaviour
     {
 
         if (currentWeapo == "gun") {
-            GunScript.HitMarkerSound();
 
-            if (_hitSound)
-                _hitSound.Play();
-            else
-                print("Missing hit sound");
+            GunScript.HitMarkerSound(transform.position);
 
             if (!swordHitWithGunOrNot) {
                 if (bloodEffect)
@@ -384,14 +391,6 @@ public class PlayerMovementScript : MonoBehaviour
     private EventInstance runSound;
     private EventInstance walkSound;
     private EventInstance idleSound;
-    [Tooltip("Sound while player makes when successfully reloads weapon.")]
-    public AudioSource _freakingZombiesSound;
-    [Tooltip("Sound Bullet makes when hits target.")]
-    public AudioSource _hitSound;
 
-    private void UpdateSound()
-    {
-
-    }
 }
 

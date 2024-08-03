@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{660c25cf-0605-413f-aecd-1aa25d3c0757}">
+		<property name="name">
+			<value>GaugeMode</value>
+		</property>
+		<relationship name="folder">
+			<destination>{eb5beb93-d07e-4588-aa49-8e70cee0070f}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{34642466-136a-487d-a571-aa4b89dc538b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{34642466-136a-487d-a571-aa4b89dc538b}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
