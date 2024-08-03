@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -52,6 +53,7 @@ public class OverheatWeapon : MonoBehaviour {
 
                     if (currentBulletsFired == maxBulletsFired) {
                         OnWeaponOverheated?.Invoke(BulletType.age);
+                        StartCoroutine(OverheatCooldown(5));
                     }
                 }
                 break;
@@ -61,11 +63,21 @@ public class OverheatWeapon : MonoBehaviour {
 
                     if (currentBulletsFired == -maxBulletsFired) {
                         OnWeaponOverheated?.Invoke(BulletType.deage);
+                        StartCoroutine(OverheatCooldown(5));
                     }
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    IEnumerator OverheatCooldown(int seconds) {
+        gun.ChangeOverheated(true);
+        yield return new WaitForSeconds(seconds);
+
+        currentBulletsFired = 0;
+        gun.ChangeOverheated(false);
+        Debug.Log($"Current bullets: {currentBulletsFired}");
     }
 }

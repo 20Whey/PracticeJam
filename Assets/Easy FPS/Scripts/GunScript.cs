@@ -81,6 +81,7 @@ public class GunScript : MonoBehaviour {
 
     private Vector2 gunFollowTimeVelocity;
 
+
     /*
 	Update loop calling for methods that are descriped below where they are initiated.
 	*/
@@ -415,11 +416,16 @@ public class GunScript : MonoBehaviour {
     public GameObject muzzelSpawn;
     private GameObject holdFlash;
     private GameObject holdSmoke;
+
+    private bool isOverheated;
+
     /*
 	 * Called from Shooting();
 	 * Creates bullets and muzzle flashes and calls for Recoil.
 	 */
     private void ShootMethod() {
+        if (isOverheated) return;
+
         if (waitTillNextFire <= 0 && !reloading && pmS.maxSpeed < 5) {
 
             if (bulletsInTheGun > 0) {
@@ -452,7 +458,9 @@ public class GunScript : MonoBehaviour {
 
     }
 
-
+    public void ChangeOverheated(bool isOverheated) {
+        this.isOverheated = isOverheated;
+    }
 
     /*
 	* Reloading, setting the reloading to animator,
