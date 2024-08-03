@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 //using UnityStandardAssets.ImageEffects;
 
-public enum GunStyles
-{
+public enum GunStyles {
     nonautomatic, automatic
 }
-public class GunScript : MonoBehaviour
-{
+public class GunScript : MonoBehaviour {
+
+    public event Action OnBulletShot;
+
     [Tooltip("Selects type of waepon to shoot rapidly or one bullet per click.")]
     public GunStyles currentStyle;
     [HideInInspector]
@@ -37,8 +39,7 @@ public class GunScript : MonoBehaviour
     /*
 	 * Collection the variables upon awake that we need.
 	 */
-    void Awake()
-    {
+    void Awake() {
 
 
         mls = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseLookScript>();
@@ -49,6 +50,7 @@ public class GunScript : MonoBehaviour
         pmS = player.GetComponent<PlayerMovementScript>();
 
         bulletSpawnPlace = GameObject.FindGameObjectWithTag("BulletSpawn");
+        hitMarker = transform.Find("hitMarkerSound").GetComponent<AudioSource>();
 
         startLook = mouseSensitvity_notAiming;
         startAim = mouseSensitvity_aiming;
@@ -79,11 +81,11 @@ public class GunScript : MonoBehaviour
 
     private Vector2 gunFollowTimeVelocity;
 
+
     /*
 	Update loop calling for methods that are descriped below where they are initiated.
 	*/
-    void Update()
-    {
+    void Update() {
 
         Animations();
 
@@ -107,8 +109,7 @@ public class GunScript : MonoBehaviour
 	*+
 	*Calculation of weapon position when aiming or not aiming.
 	*/
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
         RotationGun();
 
         MeeleAnimationsStates();
@@ -151,8 +152,7 @@ public class GunScript : MonoBehaviour
     /*
 	 * Used to give our main camera different sensivity options for each gun.
 	 */
-    void GiveCameraScriptMySensitvity()
-    {
+    void GiveCameraScriptMySensitvity() {
         mls.mouseSensitvity_notAiming = mouseSensitvity_notAiming;
         mls.mouseSensitvity_aiming = mouseSensitvity_aiming;
     }
@@ -160,8 +160,7 @@ public class GunScript : MonoBehaviour
     /*
 	 * Used to expand position of the crosshair or make it dissapear when running
 	 */
-    void CrossHairExpansionWhenWalking()
-    {
+    void CrossHairExpansionWhenWalking() {
 
         if (player.GetComponent<Rigidbody>().velocity.magnitude > 1 && Input.GetAxis("Fire1") == 0) {//ifnot shooting
 
@@ -186,8 +185,7 @@ public class GunScript : MonoBehaviour
 	 * Changes the max speed that player is allowed to go.
 	 * Also max speed is connected to the animator which will trigger the run animation.
 	 */
-    void Sprint()
-    {// Running();  so i can find it with CTRL + F
+    void Sprint() {// Running();  so i can find it with CTRL + F
         if (Input.GetAxis("Vertical") > 0 && Input.GetAxisRaw("Fire2") == 0 && meeleAttack == false && Input.GetAxisRaw("Fire1") == 0) {
             if (Input.GetKeyDown(KeyCode.LeftShift)) {
                 if (pmS.maxSpeed == walkingSpeed) {
@@ -211,8 +209,7 @@ public class GunScript : MonoBehaviour
 	 * Checking if meeleAttack is already running.
 	 * If we are not reloading we can trigger the MeeleAttack animation from the IENumerator.
 	 */
-    void MeeleAnimationsStates()
-    {
+    void MeeleAnimationsStates() {
         if (handsAnimator) {
             meeleAttack = handsAnimator.GetCurrentAnimatorStateInfo(0).IsName(meeleAnimationName);
             aiming = handsAnimator.GetCurrentAnimatorStateInfo(0).IsName(aimingAnimationName);
@@ -221,8 +218,7 @@ public class GunScript : MonoBehaviour
     /*
 	* User inputs meele attack with Q in keyboard start the coroutine for animation and damage attack.
 	*/
-    void MeeleAttack()
-    {
+    void MeeleAttack() {
 
         if (Input.GetKeyDown(KeyCode.Q) && !meeleAttack) {
             StartCoroutine("AnimationMeeleAttack");
@@ -231,8 +227,7 @@ public class GunScript : MonoBehaviour
     /*
 	* Sets meele animation to play.
 	*/
-    IEnumerator AnimationMeeleAttack()
-    {
+    IEnumerator AnimationMeeleAttack() {
         handsAnimator.SetBool("meeleAttack", true);
         //yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(0.1f);
@@ -243,8 +238,7 @@ public class GunScript : MonoBehaviour
     /*
 	* Setting the mouse sensitvity lower when meele attack and waits till it ends.
 	*/
-    void LockCameraWhileMelee()
-    {
+    void LockCameraWhileMelee() {
         if (meeleAttack) {
             mouseSensitvity_notAiming = 2;
             mouseSensitvity_aiming = 1.6f;
@@ -265,8 +259,7 @@ public class GunScript : MonoBehaviour
 	 * Calculatin the weapon position accordingly to the player position and rotation.
 	 * After calculation the recoil amount are decreased to 0.
 	 */
-    void PositionGun()
-    {
+    void PositionGun() {
         transform.position = Vector3.SmoothDamp(transform.position,
             mainCamera.transform.position -
             (mainCamera.transform.right * (currentGunPosition.x + currentRecoilXPos)) +
@@ -301,8 +294,7 @@ public class GunScript : MonoBehaviour
 	* Rotatin the weapon according to mouse look rotation.
 	* Calculating the forawrd rotation like in Call Of Duty weapon weight
 	*/
-    void RotationGun()
-    {
+    void RotationGun() {
 
         rotationDeltaY = mls.currentYRotation - rotationLastY;
         rotationDeltaX = mls.currentCameraXRotation - rotationLastX;
@@ -325,11 +317,10 @@ public class GunScript : MonoBehaviour
     /*
 	 * Called from ShootMethod();, upon shooting the recoil amount will increase.
 	 */
-    public void RecoilMath()
-    {
+    public void RecoilMath() {
         currentRecoilZPos -= recoilAmount_z;
-        currentRecoilXPos -= (Random.value - 0.5f) * recoilAmount_x;
-        currentRecoilYPos -= (Random.value - 0.5f) * recoilAmount_y;
+        currentRecoilXPos -= (UnityEngine.Random.value - 0.5f) * recoilAmount_x;
+        currentRecoilYPos -= (UnityEngine.Random.value - 0.5f) * recoilAmount_y;
         mls.wantedCameraXRotation -= Mathf.Abs(currentRecoilYPos * gunPrecision);
         mls.wantedYRotation -= (currentRecoilXPos * gunPrecision);
 
@@ -347,8 +338,7 @@ public class GunScript : MonoBehaviour
     /*
 	 * Checking if the gun is automatic or nonautomatic and accordingly runs the ShootMethod();.
 	 */
-    void Shooting()
-    {
+    void Shooting() {
 
         if (!meeleAttack) {
             if (currentStyle == GunStyles.nonautomatic) {
@@ -410,13 +400,14 @@ public class GunScript : MonoBehaviour
 
     [Tooltip("Audios for shootingSound, and reloading.")]
     public AudioSource shoot_sound_source, reloadSound_source;
+    [Tooltip("Sound that plays after successful attack bullet hit.")]
+    public static AudioSource hitMarker;
 
     /*
 	* Sounds that is called upon hitting the target.
 	*/
-    public static void HitMarkerSound(Vector3 Pos)
-    {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.hitMarkerSound, Pos);
+    public static void HitMarkerSound() {
+        hitMarker.Play();
     }
 
     [Tooltip("Array of muzzel flashes, randmly one will appear after each bullet.")]
@@ -425,24 +416,32 @@ public class GunScript : MonoBehaviour
     public GameObject muzzelSpawn;
     private GameObject holdFlash;
     private GameObject holdSmoke;
+
+    private bool isOverheated;
+
     /*
 	 * Called from Shooting();
 	 * Creates bullets and muzzle flashes and calls for Recoil.
 	 */
-    private void ShootMethod()
-    {
+    private void ShootMethod() {
+        if (isOverheated) return;
+
         if (waitTillNextFire <= 0 && !reloading && pmS.maxSpeed < 5) {
 
             if (bulletsInTheGun > 0) {
 
-                int randomNumberForMuzzelFlash = Random.Range(0, 5);
-                if (bullet)
+                int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
+                if (bullet) {
                     Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
-                else
+                    OnBulletShot?.Invoke();
+                } else
                     print("Missing the bullet prefab");
                 holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
                 holdFlash.transform.parent = muzzelSpawn.transform;
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.bulletSound, transform.position);
+                if (shoot_sound_source)
+                    shoot_sound_source.Play();
+                else
+                    print("Missing 'Shoot Sound Source'.");
 
                 RecoilMath();
 
@@ -459,7 +458,9 @@ public class GunScript : MonoBehaviour
 
     }
 
-
+    public void ChangeOverheated(bool isOverheated) {
+        this.isOverheated = isOverheated;
+    }
 
     /*
 	* Reloading, setting the reloading to animator,
@@ -468,17 +469,15 @@ public class GunScript : MonoBehaviour
     [Header("reload time after anima")]
     [Tooltip("Time that passes after reloading. Depends on your reload animation length, because reloading can be interrupted via meele attack or running. So any action before this finishes will interrupt reloading.")]
     public float reloadChangeBulletsTime;
-    IEnumerator Reload_Animation()
-    {
+    IEnumerator Reload_Animation() {
         if (bulletsIHave > 0 && bulletsInTheGun < amountOfBulletsPerLoad && !reloading/* && !aiming*/) {
 
-            //todo:
-            /*if (reloadSound_source.isPlaying == false && reloadSound_source != null) {
+            if (reloadSound_source.isPlaying == false && reloadSound_source != null) {
                 if (reloadSound_source)
                     reloadSound_source.Play();
                 else
                     print("'Reload Sound Source' missing.");
-            }*/
+            }
 
 
             handsAnimator.SetBool("reloading", true);
@@ -489,9 +488,11 @@ public class GunScript : MonoBehaviour
 
             yield return new WaitForSeconds(reloadChangeBulletsTime - 0.5f);//minus ovo vrijeme cekanja na yield
             if (meeleAttack == false && pmS.maxSpeed != runningSpeed) {
-                //TODO:
-                /*if (player.GetComponent<PlayerMovementScript>()._freakingZombiesSound)
-                    player.GetComponent<PlayerMovementScript>()._freakingZombiesSound.Play();*/
+                //print ("tu sam");
+                if (player.GetComponent<PlayerMovementScript>()._freakingZombiesSound)
+                    player.GetComponent<PlayerMovementScript>()._freakingZombiesSound.Play();
+                else
+                    print("Missing Freaking Zombies Sound");
 
                 if (bulletsIHave - amountOfBulletsPerLoad >= 0) {
                     bulletsIHave -= amountOfBulletsPerLoad - bulletsInTheGun;
@@ -521,13 +522,11 @@ public class GunScript : MonoBehaviour
 	 */
     [Tooltip("HUD bullets to display bullet count on screen. Will be find under name 'HUD_bullets' in scene.")]
     public TextMesh HUD_bullets;
-    void OnGUI()
-    {
+    void OnGUI() {
         if (!HUD_bullets) {
             try {
                 HUD_bullets = GameObject.Find("HUD_bullets").GetComponent<TextMesh>();
-            }
-            catch (System.Exception ex) {
+            } catch (System.Exception ex) {
                 print("Couldnt find the HUD_Bullets ->" + ex.StackTrace.ToString());
             }
         }
@@ -547,8 +546,7 @@ public class GunScript : MonoBehaviour
     /*
 	 * Drawing the crossHair.
 	 */
-    void DrawCrosshair()
-    {
+    void DrawCrosshair() {
         GUI.color = new Color(GUI.color.r, GUI.color.g, GUI.color.b, fadeout_value);
         if (Input.GetAxis("Fire2") == 0) {//if not aiming draw
             GUI.DrawTexture(new Rect(vec2(left_pos_crosshair).x + position_x(-expandValues_crosshair.x) + Screen.width / 2, Screen.height / 2 + vec2(left_pos_crosshair).y, vec2(size_crosshair_horizontal).x, vec2(size_crosshair_horizontal).y), vertical_crosshair);//left
@@ -561,24 +559,19 @@ public class GunScript : MonoBehaviour
     }
 
     //#####		RETURN THE SIZE AND POSITION for GUI images ##################
-    private float position_x(float var)
-    {
+    private float position_x(float var) {
         return Screen.width * var / 100;
     }
-    private float position_y(float var)
-    {
+    private float position_y(float var) {
         return Screen.height * var / 100;
     }
-    private float size_x(float var)
-    {
+    private float size_x(float var) {
         return Screen.width * var / 100;
     }
-    private float size_y(float var)
-    {
+    private float size_y(float var) {
         return Screen.height * var / 100;
     }
-    private Vector2 vec2(Vector2 _vec2)
-    {
+    private Vector2 vec2(Vector2 _vec2) {
         return new Vector2(Screen.width * _vec2.x / 100, Screen.height * _vec2.y / 100);
     }
     //#
@@ -588,8 +581,7 @@ public class GunScript : MonoBehaviour
 	* Fetching if any current animation is running.
 	* Setting the reload animation upon pressing R.
 	*/
-    void Animations()
-    {
+    void Animations() {
 
         if (handsAnimator) {
 
@@ -609,5 +601,4 @@ public class GunScript : MonoBehaviour
     public string reloadAnimationName = "Player_Reload";
     public string aimingAnimationName = "Player_AImpose";
     public string meeleAnimationName = "Character_Malee";
-
 }
