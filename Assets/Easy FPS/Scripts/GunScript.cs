@@ -610,7 +610,4 @@ public class GunScript : MonoBehaviour
     public string aimingAnimationName = "Player_AImpose";
     public string meeleAnimationName = "Character_Malee";
 
-    //[Header("Gun SOUNDS")]
-
-
 }

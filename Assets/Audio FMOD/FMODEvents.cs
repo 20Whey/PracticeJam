@@ -20,6 +20,9 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Bullet SFX")]
     [field: SerializeField] public EventReference bulletSound { get; private set; }
 
+    [field: Header("Gauge SFX")]
+    [field: SerializeField] public EventReference gaugeSound { get; private set; }
+
 
 
     public static FMODEvents instance { get; private set; }
