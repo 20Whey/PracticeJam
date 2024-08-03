@@ -12,8 +12,11 @@ public class EnemyClass : MonoBehaviour
 	public int enemyDamage;
 	public float movementSpeed;
 	public float accuracy;
+	public float bulletspeed;
 
 	public EnemyAge enemyAge;
+	public GameObject bulletPrefab;
+	public Transform bulletSpawnPoint;
 	private EnemyManager enemyManager;
 
 	public enum EnemyAge
@@ -34,6 +37,12 @@ public class EnemyClass : MonoBehaviour
 		oldAge = 0;
 		youngAge = 0;
 	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown("space")) { FireBullet(); }
+	}
+
 	public void TakeDamage(int damage, string damageType)
 	{
 		switch (damageType)
@@ -47,6 +56,11 @@ public class EnemyClass : MonoBehaviour
 				break;
 		}
 		enemyManager.checkWaveClear();
+	}
+
+	public void FireBullet()
+	{
+		ObjectPoolManager.SpawnObject(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation, ObjectPoolManager.PoolType.Projectiles);
 	}
 
 	public void AgeEnemy(int damage)
