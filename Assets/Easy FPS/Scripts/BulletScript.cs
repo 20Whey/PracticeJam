@@ -32,6 +32,10 @@ public class BulletScript : MonoBehaviour {
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
 				}
+				if(hit.transform.tag == "Enemy")
+				{
+					hit.transform.gameObject.GetComponent<EnemyClass>().TakeDamage(1, "age");
+				}
 			}		
 			Destroy(gameObject);
 		}

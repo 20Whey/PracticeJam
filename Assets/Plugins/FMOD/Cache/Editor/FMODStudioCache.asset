@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638582392641882484
+  lastModified: 638582312206303303
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -42,7 +42,7 @@ MonoBehaviour:
   - {fileID: -7922379753148808996}
   StringsBanks:
   - {fileID: 333134825432648477}
-  cacheTime: 638582392641973690
+  cacheTime: 638582312206303303
   cacheVersion: 131617
 --- !u!114 &333134825432648477
 MonoBehaviour:
@@ -59,7 +59,7 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638582392641910764
+  lastModified: 638582312206303303
   FileSizes:
   - Name: Desktop
     Value: 758
@@ -79,7 +79,7 @@ MonoBehaviour:
   Path: Mini-JAM/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638582392641973690
+  lastModified: 638582312206303303
   FileSizes:
   - Name: Desktop
     Value: 494
