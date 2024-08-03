@@ -23,6 +23,9 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Gauge SFX")]
     [field: SerializeField] public EventReference gaugeSound { get; private set; }
 
+    [field: Header("Overheat SFX")]
+    [field: SerializeField] public EventReference overheatSound { get; private set; }
+
 
 
     public static FMODEvents instance { get; private set; }

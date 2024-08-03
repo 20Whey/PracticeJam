@@ -833,6 +833,13 @@ MonoBehaviour:
       Data3: -1668468588
       Data4: 1409464411
     Path: event:/Weapons/Gauge
+  <overheatSound>k__BackingField:
+    Guid:
+      Data1: -1584661620
+      Data2: 1275869220
+      Data3: -1937249100
+      Data4: 1198008729
+    Path: event:/Weapons/Overheating
 --- !u!1001 &7763680270991928739
 PrefabInstance:
   m_ObjectHideFlags: 0
