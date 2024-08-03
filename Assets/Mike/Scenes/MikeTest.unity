@@ -786,53 +786,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <jumpSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1956275108
+      Data2: 1140338569
+      Data3: 615626391
+      Data4: -486300581
+    Path: event:/Player Movement/Jump
   <runSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 276956526
+      Data2: 1274564073
+      Data3: -1345342839
+      Data4: 683144027
+    Path: event:/Player Movement/Running
   <walkSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -780674943
+      Data2: 1288241900
+      Data3: 1870120832
+      Data4: -2041319249
+    Path: event:/Player Movement/Walking
   <idleSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1207733181
+      Data2: 1151323528
+      Data3: -1674794056
+      Data4: 2015209973
+    Path: event:/Player Movement/Idle
   <hitMarkerSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -503601547
+      Data2: 1278250874
+      Data3: -586800494
+      Data4: -1738914413
+    Path: event:/Weapons/HitMarker
   <bulletSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1736825778
+      Data2: 1241643682
+      Data3: 816244396
+      Data4: -1587349541
+    Path: event:/Weapons/Shooting
   <gaugeSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 538879392
+      Data2: 1074315453
+      Data3: -1668468588
+      Data4: 1409464411
+    Path: event:/Weapons/Gauge
 --- !u!1001 &7763680270991928739
 PrefabInstance:
   m_ObjectHideFlags: 0
