@@ -4,12 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LevelPart
-  - Dummie
+  - Enemy
+  - Barrier
   - SecondCamera
   - BulletSpawn
   - Weapon
-  - Enemy
+  - LevelPart
+  - Dummie
+  - Barr
   layers:
   - Default
   - TransparentFX
@@ -17,8 +19,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Not Walkable
+  - Walkable
   - 
   - 
   - 

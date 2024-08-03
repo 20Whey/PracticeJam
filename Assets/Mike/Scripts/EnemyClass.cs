@@ -28,8 +28,8 @@ public class EnemyClass : MonoBehaviour
 
 	void Awake()
 	{
-		enemyManager = FindObjectOfType<EnemyManager>();
-		enemyManager.enemies.Add(gameObject);
+	//	enemyManager = FindObjectOfType<EnemyManager>();
+	//	enemyManager.enemies.Add(gameObject);
 	}
 
 	void OnEnable()
