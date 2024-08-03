@@ -156,10 +156,10 @@ MonoBehaviour:
   enemies: []
   waveCount: 1
   statMultiplier: 0.5
-  youngPrefab: {fileID: 61785149904921120, guid: 5eadc7219d4de20418256923a8e14c63, type: 3}
+  youngPrefab: {fileID: 61785149904921120, guid: fe038eeb9ab7b19448640beb46fa06c1, type: 3}
   oldPrefab: {fileID: 61785149904921120, guid: 1914e2e3b6acc954c9954ed041bfe2d2, type: 3}
   oldRagdollPrefab: {fileID: 61785149904921120, guid: ce5e7ecebdd9de8489b3568c6bde5399, type: 3}
-  youngRagdollPrefab: {fileID: 61785149904921120, guid: ce5e7ecebdd9de8489b3568c6bde5399, type: 3}
+  youngRagdollPrefab: {fileID: 61785149904921120, guid: dc7eccaee19f9d34d88be577c493899c, type: 3}
 --- !u!4 &72116920
 Transform:
   m_ObjectHideFlags: 0
