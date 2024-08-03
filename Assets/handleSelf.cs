@@ -6,36 +6,37 @@ using System.Linq;
 
 public class handleSelf : MonoBehaviour
 {
-
+    public string lastState;
     private NavMeshAgent agent;
+
+    public GameObject? chosenCoverPoint;
     public Transform target;
     public Transform pl;
     public bool isPerformingAction = false;
     public float countdown;
+    public float? coverCountDown;
     // Start is called before the first frame update
     void Start()
     {
-    
+    chosenCoverPoint = null;
     agent = gameObject.GetComponent<NavMeshAgent>(); 
-    countdown = 4f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (countdown > 0)
-{
-    countdown -= Time.deltaTime;
-}
-else
-{
-    Debug.Log("Time has run out!");
-    HandleCurrentState("SCover");
-    countdown = 4f;
 
-}
+
     pl = GameObject.Find("PlayerCharacter").transform;
 
+    if(coverCountDown != null) if (coverCountDown > 0){
+    coverCountDown -= Time.deltaTime;
+    } else {
+    coverCountDown = null;
+    chosenCoverPoint.GetComponent<Slot>().currentUser = null;
+    chosenCoverPoint = null;
+    isPerformingAction = false;
+    }
 
        // if(Vector3.Distance(agent.transform.position, target.position) < 0.2f) isPerformingAction = false;
 
@@ -56,7 +57,7 @@ else
 }
 
 
-    private void HandleCurrentState(string State){
+    public void HandleCurrentState(string State){
     switch(State){
    case "SCover": 
    isPerformingAction = true;
@@ -70,23 +71,41 @@ else
             //MoveToBarrier and start taking cover
             agent.destination = Infant.transform.position;
             child.GetComponent<Slot>().currentUser = gameObject;
-            break;
+            chosenCoverPoint = child.gameObject;
+            lastState = "SCover";
+            coverCountDown = 5f;
+
+            return;
     }}
     }
-   // HandleCurrentState("Wander");
+    HandleCurrentState("Wander");
     break;
     case "Wander":
-    isPerformingAction = true;
+    isPerformingAction = false;
     Vector3 point = (Random.insideUnitSphere * 5 ) + gameObject.transform.position;
     agent.destination = point;
     //HandleCurrentState("SCover");
+    lastState = "Wander";
     break;
 
     case "Rush":    
     isPerformingAction = true;
     agent.destination = pl.position; 
+    if(lastState == "SCover"){
+    
+
+
+    }
+    lastState = "Rush";
+    
     break;
     
+    case "Flee":
+    isPerformingAction = true;
+    //tmp
+    agent.destination = -pl.position;
+    lastState = "Flee";
+    break;
 
 
     }
