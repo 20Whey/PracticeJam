@@ -454,10 +454,7 @@ public class GunScript : MonoBehaviour
                     print("Missing the bullet prefab");
                 holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
                 holdFlash.transform.parent = muzzelSpawn.transform;
-                if (shoot_sound_source)
-                    shoot_sound_source.Play();
-                else
-                    print("Missing 'Shoot Sound Source'.");
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.bulletSound, transform.position);
 
                 RecoilMath();
 
