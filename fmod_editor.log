@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000238857F2858 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000238857F5A98 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -19,10 +19,346 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
+[LOG] SystemI::createSound                     : filename = Mini-JAM/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] Thread::initThread                       : Init FMOD nonblocking thread (0). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 114688, Semaphore: Yes, Sleep Time: 0, Looping: Yes.
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000238835B9748, queue head = 0000023824DB1618, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000238835B9748
+[LOG] SystemI::createSoundInternal             :     Create name='Mini-JAM/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000235E04182E0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 4599
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSound                     :     filename = Mini-JAM/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000238835B62F8, queue head = 0000023824DB1618, queue count = 0
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057', format=5, channels=2, frequency=48000, lengthbytes=147168, lengthpcm=500345, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.966736.
+[LOG] Thread::initThread                       :     Init FMOD file thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFC, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000238835B9748
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000238835B62F8
+[LOG] SystemI::createSoundInternal             :     Create name='Mini-JAM/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000235E0418420
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 11251
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='22473 fast walking on dirt loop-full', format=5, channels=2, frequency=48000, lengthbytes=202496, lengthpcm=986275, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.502106.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000238835B62F8
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000238835B5DE8, queue head = 0000023824DB1618, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000238835B5DE8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000238835B5DE8
+[LOG] SoundI::release                          : ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (00000238835B9748)
+[LOG] SoundI::release                          :     ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (0000023848B01968)
+[LOG] SoundI::release                          :     ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (00000238835B8158)
+[LOG] SoundI::release                          : 22473 fast walking on dirt loop-full (00000238835B62F8)
+[LOG] SoundI::release                          :     22473 fast walking on dirt loop-full (0000023848B01B08)
+[LOG] SoundI::release                          :     22473 fast walking on dirt loop-full (00000238835B5DE8)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magic Gun Shot 3', format=5, channels=2, frequency=48000, lengthbytes=18912, lengthpcm=78577, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magic Gun Shot 2', format=5, channels=2, frequency=48000, lengthbytes=19296, lengthpcm=73130, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magic Shot 02', format=5, channels=2, frequency=48000, lengthbytes=21120, lengthpcm=80977, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.570251.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='WEAPONS_SCI_FI_Shot_Rustle_03', format=5, channels=2, frequency=48000, lengthbytes=16576, lengthpcm=93456, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.602811.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='WEAPONS_SCI_FI_Shot_Soft_01', format=5, channels=2, frequency=48000, lengthbytes=19872, lengthpcm=118080, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.610292.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magic Gun Shot 1', format=5, channels=2, frequency=48000, lengthbytes=19264, lengthpcm=77375, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magic Shot 03', format=5, channels=2, frequency=48000, lengthbytes=21440, lengthpcm=82936, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.779144.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Magic Shot 01', format=5, channels=2, frequency=48000, lengthbytes=14976, lengthpcm=58216, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.904663.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='WEAPONS_SCI_FI_Shot_Tonal_05', format=5, channels=2, frequency=48000, lengthbytes=13472, lengthpcm=109728, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.561291.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='WEAPONS_SCI_FI_Shot_Bright_03', format=5, channels=2, frequency=48000, lengthbytes=17760, lengthpcm=98063, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.617357.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 0000004655A0EF98
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFCF82A3F60
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFCF82A3F20
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFCF82A4040
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFCF82A4100
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000023883936EF8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='14506 fat scifi shot-full', format=5, channels=2, frequency=48000, lengthbytes=21888, lengthpcm=84986, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.989960.
+[LOG] SystemI::createSound                     : filename = Mini-JAM/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000238835B84B8, queue head = 0000023824DB1618, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000238835B84B8
+[LOG] SystemI::createSoundInternal             :     Create name='Mini-JAM/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000235E04182E0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 4599
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSound                     :     filename = Mini-JAM/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000238835B9748, queue head = 0000023824DB1618, queue count = 0
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057', format=5, channels=2, frequency=48000, lengthbytes=147168, lengthpcm=500345, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.966736.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000238835B84B8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000238835B9748
+[LOG] SystemI::createSoundInternal             :     Create name='Mini-JAM/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000235E0418420
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 11251
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='22473 fast walking on dirt loop-full', format=5, channels=2, frequency=48000, lengthbytes=202496, lengthpcm=986275, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.502106.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000238835B9748
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000238835B7FA8, queue head = 0000023824DB1618, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000238835B7FA8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000238835B7FA8
+[LOG] SystemI::createSound                     : filename = Mini-JAM/Build/Desktop/SFX.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000235E069CC68, queue head = 0000023824DB1618, queue count = 0
+[LOG] SystemI::createSound                     : filename = Mini-JAM/Build/Desktop/SFX.bank : mode 02010082
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000235E069CC68
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     Create name='Mini-JAM/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] AsyncThread::add                         :     add sound to async queue : soundi = 00000235E069DD48, queue head = 0000023824DB1618, queue count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000023778069D00
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 7500
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='22473 fast walking on dirt loop-full', format=5, channels=2, frequency=48000, lengthbytes=202496, lengthpcm=986275, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.502106.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000235E069CC68
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000235E069DD48
+[LOG] SystemI::createSoundInternal             :     Create name='Mini-JAM/Build/Desktop/SFX.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 1001760
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 21600
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000023778069580
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 1837
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057', format=5, channels=2, frequency=48000, lengthbytes=147168, lengthpcm=500345, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.966736.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000235E069DD48
+[LOG] SoundI::release                          : 22473 fast walking on dirt loop-full (00000238835B9748)
+[LOG] SoundI::release                          :     22473 fast walking on dirt loop-full (0000023848B02328)
+[LOG] SoundI::release                          :     22473 fast walking on dirt loop-full (00000238835B7FA8)
+[LOG] SoundI::release                          : ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (00000238835B84B8)
+[LOG] SoundI::release                          :     ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (0000023848B017C8)
+[LOG] SoundI::release                          :     ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (00000238835B98F8)
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 00000235E069D9E8, queue head = 0000023824DB1618, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000235E069D9E8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000235E069D9E8
+[LOG] SoundI::release                          : ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (00000235E069DD48)
+[LOG] SoundI::release                          :     ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (000002377AC5CF18)
+[LOG] SoundI::release                          :     ANIMAL-DOG-COLLAR-JINGLE_6EXT8-10057 (00000235E069AFB8)
+[LOG] SoundI::release                          : 22473 fast walking on dirt loop-full (00000235E069CC68)
+[LOG] SoundI::release                          :     22473 fast walking on dirt loop-full (000002377AC5D598)
+[LOG] SoundI::release                          :     22473 fast walking on dirt loop-full (00000235E069D9E8)
+[LOG] SoundI::release                          :  (00000235E09A0D18)
+[LOG] SoundI::release                          :     Male_Breathing_Running_ODY-1346-071 (0000023825A70748)
+[LOG] SoundI::release                          :  (00000235E09A0E88)
+[LOG] SoundI::release                          :     breathing 1 (000002377F430508)
+[LOG] SoundI::release                          :  (00000235E099E368)
+[LOG] SoundI::release                          :     breathing 2 (0000023825A6FD88)
+[LOG] SoundI::release                          :  (00000235E099FBD8)
+[LOG] SoundI::release                          :     Male Breathing (000002377B28A7D8)
+[LOG] SoundI::release                          :  (00000235E099F8F8)
+[LOG] SoundI::release                          :     BreatheNose_BW.16374 (000002377B28ACB8)
+[LOG] SoundI::release                          :  (000002384814FE28)
+[LOG] SoundI::release                          :     Magic Gun Shot 1 (00000238850BE568)
+[LOG] SoundI::release                          :  (00000235E009DF48)
+[LOG] SoundI::release                          :     Magic Gun Shot 2 (000002382530ED28)
+[LOG] SoundI::release                          :  (00000235E009CC98)
+[LOG] SoundI::release                          :     Magic Gun Shot 3 (000002382530F068)
+[LOG] SoundI::release                          :  (000002385701F068)
+[LOG] SoundI::release                          :     WEAPONS_SCI_FI_Shot_Bright_03 (00000238844A1BE8)
+[LOG] SoundI::release                          :  (00000235E009C6D8)
+[LOG] SoundI::release                          :     WEAPONS_SCI_FI_Shot_Rustle_03 (00000235E02941F8)
+[LOG] SoundI::release                          :  (00000235E009D6A8)
+[LOG] SoundI::release                          :     WEAPONS_SCI_FI_Shot_Soft_01 (00000238850BE3C8)
+[LOG] SoundI::release                          :  (000002384814EFC8)
+[LOG] SoundI::release                          :     WEAPONS_SCI_FI_Shot_Tonal_05 (00000238844A1A48)
+[LOG] SoundI::release                          :  (000002384814EA08)
+[LOG] SoundI::release                          :     Magic Shot 01 (00000238850BED88)
+[LOG] SoundI::release                          :  (00000235E009CF78)
+[LOG] SoundI::release                          :     Magic Shot 02 (000002382530E6A8)
+[LOG] SoundI::release                          :  (000002384814E448)
+[LOG] SoundI::release                          :     Magic Shot 03 (00000238850BEA48)
+[LOG] SoundI::release                          :  (000002385701F348)
+[LOG] SoundI::release                          :     14506 fat scifi shot-full (00000238844A25A8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
 [LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] SystemI::close                           : Closed.

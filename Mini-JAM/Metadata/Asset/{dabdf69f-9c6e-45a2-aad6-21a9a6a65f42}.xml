@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{dabdf69f-9c6e-45a2-aad6-21a9a6a65f42}">
+		<property name="assetPath">
+			<value>Bullet/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{249b3001-9136-4168-b7d6-4b55c1a86689}</destination>
+		</relationship>
+	</object>
+</objects>

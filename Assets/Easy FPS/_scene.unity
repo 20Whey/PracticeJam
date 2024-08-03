@@ -397,6 +397,13 @@ MonoBehaviour:
       Data3: -1674794056
       Data4: 2015209973
     Path: event:/Player Movement/Idle
+  <hitMarkerSound>k__BackingField:
+    Guid:
+      Data1: -1043212407
+      Data2: 1175208823
+      Data3: -67484517
+      Data4: -786028219
+    Path: event:/Shooting/HitMarker
 --- !u!1 &1097401645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 173116, guid: c391f12a928274acab8576bb6030641d, type: 3}

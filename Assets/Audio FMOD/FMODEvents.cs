@@ -14,6 +14,12 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Idle SFX")]
     [field: SerializeField] public EventReference idleSound { get; private set; }
 
+    [field: Header("HitMarker SFX")]
+    [field: SerializeField] public EventReference hitMarkerSound { get; private set; }
+
+    [field: Header("Bullet SFX")]
+    [field: SerializeField] public EventReference bulletSound { get; private set; }
+
 
 
     public static FMODEvents instance { get; private set; }

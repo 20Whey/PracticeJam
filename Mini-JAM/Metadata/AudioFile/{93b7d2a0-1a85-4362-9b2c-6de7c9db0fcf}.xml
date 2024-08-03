@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{93b7d2a0-1a85-4362-9b2c-6de7c9db0fcf}">
+		<property name="assetPath">
+			<value>Bullet/Magic Shot 03.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.727845804988662</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{249b3001-9136-4168-b7d6-4b55c1a86689}</destination>
+		</relationship>
+	</object>
+</objects>
