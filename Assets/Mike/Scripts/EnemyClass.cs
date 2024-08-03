@@ -12,10 +12,11 @@ public class EnemyClass : MonoBehaviour
 	public int enemyDamage;
 	public float movementSpeed;
 	public float accuracy;
+	public float bulletspeed;
 
 	public EnemyAge enemyAge;
-	public GameObject youngPrefab;
-	public GameObject oldPrefab;
+	public GameObject bulletPrefab;
+	public Transform bulletSpawnPoint;
 	private EnemyManager enemyManager;
 
 	public enum EnemyAge
@@ -36,6 +37,12 @@ public class EnemyClass : MonoBehaviour
 		oldAge = 0;
 		youngAge = 0;
 	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown("space")) { FireBullet(); }
+	}
+
 	public void TakeDamage(int damage, string damageType)
 	{
 		switch (damageType)
@@ -51,16 +58,24 @@ public class EnemyClass : MonoBehaviour
 		enemyManager.checkWaveClear();
 	}
 
+	public void FireBullet()
+	{
+		ObjectPoolManager.SpawnObject(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation, ObjectPoolManager.PoolType.Projectiles);
+	}
+
 	public void AgeEnemy(int damage)
 	{
 		oldAge += damage;
 		if(oldAge >= maxAge)
 		{
-			if(enemyAge != EnemyAge.Old)
+			if (enemyAge != EnemyAge.Old)
 			{
-				ObjectPoolManager.SpawnObject(oldPrefab, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+				enemyManager.SwitchObject(gameObject, "old");
 			}
-			ObjectPoolManager.ReturnObjectToPool(gameObject);
+			else
+			{
+				enemyManager.SwitchObject(gameObject, "oldRD");
+			}
 			enemyManager.enemies.Remove(gameObject);
 		}
 	}
@@ -72,9 +87,12 @@ public class EnemyClass : MonoBehaviour
 		{
 			if (enemyAge != EnemyAge.Young)
 			{
-				ObjectPoolManager.SpawnObject(youngPrefab, transform.position, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
+				enemyManager.SwitchObject(gameObject, "young");
 			}
-			ObjectPoolManager.ReturnObjectToPool(gameObject);
+			else
+			{
+				enemyManager.SwitchObject(gameObject, "youngRD");
+			}
 			enemyManager.enemies.Remove(gameObject);
 		}
 	}
