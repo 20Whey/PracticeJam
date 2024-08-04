@@ -9,20 +9,22 @@ public class handleSelf : MonoBehaviour
 	public string lastState;
 	private NavMeshAgent agent;
 
-	public GameObject? chosenCoverPoint;
-	public Transform target;
-	[SerializeField] public Transform pl;
-	public bool isPerformingAction = false;
-	public float countdown;
-	public float? coverCountDown;
-	// Start is called before the first frame update
-	void Start()
-	{
-		countdown = 4f;
-		chosenCoverPoint = null;
-		agent = gameObject.transform.parent.GetComponent<NavMeshAgent>();
-		pl = FindObjectOfType<PlayerMovementScript>().gameObject.transform;
-	}
+    public GameObject? chosenCoverPoint;
+    public Transform target;
+    public Transform pl;
+    public bool isPerformingAction = false;
+    public float countdown;
+    public float? coverCountDown;
+    // Start is called before the first frame update
+    void Start()
+    {
+    countdown = 4f;
+    chosenCoverPoint = null;
+    agent = gameObject.transform.parent.GetComponent<NavMeshAgent>(); 
+
+    pl = GameObject.Find("PlayerCharacter").transform;
+
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -57,21 +59,21 @@ public class handleSelf : MonoBehaviour
 	}
 
 
-	public List<GameObject> findSortedBarriers()
-	{
-		List<GameObject> toSort = GameObject.FindGameObjectsWithTag("Barr").ToList();
-		return toSort.OrderBy(Barrier => Vector3.Distance(gameObject.transform.position, Barrier.transform.position)).ToList();
-	}
-	private List<Transform> getAllChilderen(GameObject parent, int num)
-	{
-		List<Transform> lsOfChild = new List<Transform>();
-		for (int i = 0; i < num; i++)
-		{
-			lsOfChild.Add(parent.transform.GetChild(i));
-			// Debug.Log(parent.transform.GetChild(i));
-		}
-		return lsOfChild.OrderBy(child => Vector3.Distance(gameObject.transform.position, child.position)).ToList();
-	}
+    public List<GameObject> findSortedBarriers(){
+    List<GameObject> toSort = GameObject.FindGameObjectsWithTag("Barr").ToList();
+        return toSort.OrderBy(Barrier => Vector3.Distance(gameObject.transform.position, Barrier.transform.position)).ToList();
+    }
+   private List<Transform> getAllChilderen(GameObject parent, int possiblePoints){
+    List<Transform> lsOfChild = new List<Transform>();
+    for(var i = 0; i < parent.transform.childCount; i++){
+    if (parent.transform.GetChild(i) != null){
+        lsOfChild.Add(parent.transform.GetChild(i));
+    }
+    
+    }
+
+    return lsOfChild.OrderBy(child => Vector3.Distance(gameObject.transform.position, child.position)).ToList();
+}
 
 
 	public void HandleCurrentState(string State)
