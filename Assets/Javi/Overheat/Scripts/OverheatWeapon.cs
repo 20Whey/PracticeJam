@@ -10,6 +10,7 @@ public enum BulletType { Age, Deage }
 public class OverheatWeapon : MonoBehaviour
 {
 
+    public GameObject bull;
     public event Action<int, float> OnBulletFired;
     public event Action<BulletType> OnWeaponOverheated;
 
@@ -34,14 +35,14 @@ public class OverheatWeapon : MonoBehaviour
 
     private void Awake()
     {
-        gun = GetComponent<GunScript>();
+        gun = gameObject.GetComponent<GunScript>();
         bulletType = BulletType.Age;
-
         currentBulletsFired = 0;
 
         gaugeSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gaugeSound);
         preOverheatSound = AudioManager.instance.CreateInstance(FMODEvents.instance.overheatingSound);
         overheatedSound = AudioManager.instance.CreateInstance(FMODEvents.instance.overheatedSound);
+        bull = null;
     }
 
     private void OnEnable()
@@ -55,6 +56,8 @@ public class OverheatWeapon : MonoBehaviour
 
     private void Update()
     {
+        bull = gameObject.GetComponent<GunScript>().bullet;
+
         preOverheatSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position + offset));
         overheatedSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position + offset));
 
@@ -75,36 +78,38 @@ public class OverheatWeapon : MonoBehaviour
 
     private void BuylletFired()
     {
-        switch (bulletType) {
-            case BulletType.Age:
+        switch (bull.name) {
+            case "AgeBullet":
+                Debug.Log("A");
+
                 if (currentBulletsFired <= maxBulletsFired) {
                     currentBulletsFired++;
                     OnBulletFired?.Invoke(currentBulletsFired, 1f);
 
                     HandleOverheatSoundPositive();
 
-                    if (currentBulletsFired == maxBulletsFired) {
+                    if (currentBulletsFired == 5) {
                         OnWeaponOverheated?.Invoke(bulletType);
                         StartCoroutine(OverheatCooldown(overheatCooldownTime));
                     }
                 }
                 break;
 
-            case BulletType.Deage:
+            default:
+                Debug.Log("B");
                 if (currentBulletsFired >= -maxBulletsFired) {
                     currentBulletsFired--;
                     OnBulletFired?.Invoke(currentBulletsFired, 1f);
 
                     HandleOverheatSoundNegative();
 
-                    if (currentBulletsFired == -maxBulletsFired) {
+                    if (currentBulletsFired < -5) {
                         OnWeaponOverheated?.Invoke(bulletType);
                         StartCoroutine(OverheatCooldown(overheatCooldownTime));
                     }
                 }
                 break;
-            default:
-                break;
+
         }
     }
 
@@ -117,7 +122,6 @@ public class OverheatWeapon : MonoBehaviour
         OnBulletFired?.Invoke(currentBulletsFired, seconds);
 
         yield return new WaitForSeconds(seconds);
-
         gun.ChangeOverheated(false);
         isGunOverheated = false;
     }
