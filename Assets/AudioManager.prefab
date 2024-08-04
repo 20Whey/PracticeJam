@@ -53,6 +53,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 200344417963832484}
     m_Modifications:
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <runSound>k__BackingField.Guid.Data1
+      value: -966328283
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <runSound>k__BackingField.Guid.Data2
+      value: 1126046497
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <runSound>k__BackingField.Guid.Data3
+      value: 921980327
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <runSound>k__BackingField.Guid.Data4
+      value: 1776453785
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <walkSound>k__BackingField.Guid.Data1
+      value: -284185514
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <walkSound>k__BackingField.Guid.Data2
+      value: 1321264467
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <walkSound>k__BackingField.Guid.Data3
+      value: -1290315888
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <walkSound>k__BackingField.Guid.Data4
+      value: -1590979006
+      objectReference: {fileID: 0}
     - target: {fileID: 1492926684544964092, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: m_Name
       value: FMOD Event

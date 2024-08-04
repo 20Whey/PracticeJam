@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 
 public enum BulletType { Age, Deage }
 
-public class OverheatWeapon : MonoBehaviour {
+public class OverheatWeapon : MonoBehaviour
+{
 
     public event Action<int, float> OnBulletFired;
     public event Action<BulletType> OnWeaponOverheated;
@@ -18,30 +20,50 @@ public class OverheatWeapon : MonoBehaviour {
 
     private GunScript gun;
 
+    private bool isGunOverheated = false;
+
+    float gaugeChange = 0;
+
     public int MaxBulletsFired => maxBulletsFired;
 
-    private void Awake() {
+    private void Awake()
+    {
         gun = GetComponent<GunScript>();
         bulletType = BulletType.Age;
 
         currentBulletsFired = 0;
+
+        gaugeSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gaugeSound);
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         gun.OnBulletShot += BuylletFired;
     }
-    private void OnDisable() {
+    private void OnDisable()
+    {
         gun.OnBulletShot -= BuylletFired;
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.L)) {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && !isGunOverheated) {
+
             bulletType = EnumExtensions.GetNextEnumValue(bulletType);
-            //Note: dany, put here the sound for when you change the bullet Type
+
+            gaugeChange = (gaugeChange == 0f) ? 1f : 0f;
+
+            gaugeSound.setParameterByName("GaugeMode", gaugeChange);
+
+            gaugeSound.start();
+
         }
+
+        Debug.Log("Gauge Value: " + gaugeChange);
     }
 
-    private void BuylletFired() {
+    private void BuylletFired()
+    {
         switch (bulletType) {
             case BulletType.Age:
                 if (currentBulletsFired <= maxBulletsFired) {
@@ -71,8 +93,10 @@ public class OverheatWeapon : MonoBehaviour {
         }
     }
 
-    IEnumerator OverheatCooldown(int seconds) {
+    IEnumerator OverheatCooldown(int seconds)
+    {
         gun.ChangeOverheated(true);
+        isGunOverheated = true;
 
         currentBulletsFired = 0;
         OnBulletFired?.Invoke(currentBulletsFired, seconds);
@@ -80,5 +104,8 @@ public class OverheatWeapon : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
 
         gun.ChangeOverheated(false);
+        isGunOverheated = false;
     }
+
+    private EventInstance gaugeSound;
 }
