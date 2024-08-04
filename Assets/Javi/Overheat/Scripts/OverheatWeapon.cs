@@ -35,7 +35,7 @@ public class OverheatWeapon : MonoBehaviour
         currentBulletsFired = 0;
 
         gaugeSound = AudioManager.instance.CreateInstance(FMODEvents.instance.gaugeSound);
-        overheatingSound = AudioManager.instance.CreateInstance(FMODEvents.instance.overheatingSound);
+        overheatSound = AudioManager.instance.CreateInstance(FMODEvents.instance.overheatingSound);
         overheatedSound = AudioManager.instance.CreateInstance(FMODEvents.instance.overheatedSound);
     }
 
@@ -76,8 +76,6 @@ public class OverheatWeapon : MonoBehaviour
                     HandlePreOverheatSoundPositive();
 
                     if (currentBulletsFired == maxBulletsFired) {
-                        //HandleOverheatSound();
-
                         OnWeaponOverheated?.Invoke(bulletType);
                         StartCoroutine(OverheatCooldown(overheatCooldownTime));
                     }
@@ -92,8 +90,6 @@ public class OverheatWeapon : MonoBehaviour
                     //HandlePreOverheatSound();
 
                     if (currentBulletsFired == -maxBulletsFired) {
-                        //HandleOverheatSound();
-
                         OnWeaponOverheated?.Invoke(bulletType);
                         StartCoroutine(OverheatCooldown(overheatCooldownTime));
                     }
@@ -121,29 +117,21 @@ public class OverheatWeapon : MonoBehaviour
 
     private void HandlePreOverheatSoundPositive()
     {
-        float overheatingVol = 1.0f;
-
         PLAYBACK_STATE overheatPlaybackState;
-        overheatingSound.getPlaybackState(out overheatPlaybackState);
+        overheatSound.getPlaybackState(out overheatPlaybackState);
 
         if (currentBulletsFired == warningBulletsFired) {
-            overheatingSound.start();
-            overheatingSound.setParameterByName("Heat", 3);
+            overheatSound.start();
+            overheatSound.setParameterByName("Heat", 3);
         }
 
         if (currentBulletsFired < warningBulletsFired && overheatPlaybackState.Equals(PLAYBACK_STATE.PLAYING)) {
-            overheatingSound.setParameterByName("Heat", 0);
+            overheatSound.setParameterByName("Heat", 0);
         }
 
         if (currentBulletsFired == maxBulletsFired) {
-            overheatingSound.setParameterByName("Fader", 0);
+            overheatSound.stop(STOP_MODE.ALLOWFADEOUT);
             overheatedSound.start();
-            if (overheatPlaybackState != (PLAYBACK_STATE.STOPPED)) {
-                overheatingSound.setVolume(Mathf.Lerp(overheatingVol, 0.0f, Time.deltaTime / 1f));
-                if (overheatingVol == 0.0f) {
-                    overheatingSound.stop(STOP_MODE.ALLOWFADEOUT);
-                }
-            }
         }
     }
 
@@ -152,19 +140,19 @@ public class OverheatWeapon : MonoBehaviour
         float overheatVol = 1.0f;
 
         PLAYBACK_STATE overheatPlaybackState;
-        overheatingSound.getPlaybackState(out overheatPlaybackState);
+        overheatSound.getPlaybackState(out overheatPlaybackState);
 
         if (overheatPlaybackState.Equals(PLAYBACK_STATE.PLAYING)) {
-            overheatingSound.setVolume(Mathf.Lerp(overheatVol, 0.0f, Time.deltaTime / 1f));
+            overheatSound.setParameterByName("Volume", Mathf.Lerp(overheatVol, 0.0f, Time.deltaTime / 1f));
             if (overheatVol == 0.0f) {
-                overheatingSound.stop(STOP_MODE.IMMEDIATE);
-                overheatingSound.setParameterByName("Heat", 4);
-                overheatingSound.start();
+                overheatSound.stop(STOP_MODE.IMMEDIATE);
+                overheatSound.setParameterByName("Heat", 4);
+                overheatSound.start();
             }
         }
     }
 
     private EventInstance gaugeSound;
-    private EventInstance overheatingSound;
+    private EventInstance overheatSound;
     private EventInstance overheatedSound;
 }

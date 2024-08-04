@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyArray;
@@ -35,15 +33,13 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        while (youngEnemyCount < maxEnemyCount)
-        {
+        while (youngEnemyCount < maxEnemyCount) {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             ObjectPoolManager.SpawnObject(enemyManager.youngPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);
             youngEnemyCount += 1;
         }
-        while (oldEnemyCount < maxEnemyCount)
-        {
+        while (oldEnemyCount < maxEnemyCount) {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             ObjectPoolManager.SpawnObject(enemyManager.oldPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);
@@ -55,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
     {
         float x = (random.Next(0, (int)spawnArea.localScale.x) - spawnArea.localScale.x / 2);
         float z = (random.Next(0, (int)spawnArea.localScale.z) - spawnArea.localScale.z / 2);
-        Debug.Log(x + " and " + z);
+        //Debug.Log(x + " and " + z);
         return new Vector3(spawnArea.position.x + x, spawnArea.position.y, spawnArea.position.z + z);
     }
 
