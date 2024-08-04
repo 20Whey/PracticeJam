@@ -1,4 +1,5 @@
 using FMOD.Studio;
+using FMODUnity;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -27,6 +28,8 @@ public class OverheatWeapon : MonoBehaviour
 
     float overheatingVol = 1.0f;
 
+    Vector3 offset = new Vector3(0, 0, 1f);
+
     public int MaxBulletsFired => maxBulletsFired;
 
     private void Awake()
@@ -52,6 +55,9 @@ public class OverheatWeapon : MonoBehaviour
 
     private void Update()
     {
+        preOverheatSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position + offset));
+        overheatedSound.set3DAttributes(RuntimeUtils.To3DAttributes(transform.position + offset));
+
         if (Input.GetKeyDown(KeyCode.R) && !isGunOverheated) {
 
             bulletType = EnumExtensions.GetNextEnumValue(bulletType);
@@ -170,7 +176,7 @@ public class OverheatWeapon : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        preOverheatSound.stop(STOP_MODE.IMMEDIATE);
+        preOverheatSound.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         preOverheatSound.setVolume(1);
 
         yield return null;
