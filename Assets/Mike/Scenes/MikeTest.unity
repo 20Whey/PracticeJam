@@ -438,58 +438,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <music>k__BackingField.Path
-      value: event:/Song
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <music>k__BackingField.Guid.Data1
-      value: 1516212063
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <music>k__BackingField.Guid.Data2
-      value: 1175223113
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <music>k__BackingField.Guid.Data3
-      value: 1591868595
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <music>k__BackingField.Guid.Data4
-      value: 1153290327
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <runSound>k__BackingField.Guid.Data1
-      value: 276956526
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <runSound>k__BackingField.Guid.Data2
-      value: 1274564073
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <runSound>k__BackingField.Guid.Data3
-      value: -1345342839
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <runSound>k__BackingField.Guid.Data4
-      value: 683144027
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <walkSound>k__BackingField.Guid.Data1
-      value: -780674943
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <walkSound>k__BackingField.Guid.Data2
-      value: 1288241900
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <walkSound>k__BackingField.Guid.Data3
-      value: 1870120832
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413665158544906578, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
-      propertyPath: <walkSound>k__BackingField.Guid.Data4
-      value: -2041319249
-      objectReference: {fileID: 0}
     - target: {fileID: 5472727307270641775, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
       propertyPath: m_Name
       value: AudioManager

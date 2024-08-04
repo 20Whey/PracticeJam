@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1838bdb528407e549b8bbf12ad42948f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  ambienceVolume: 1
+  SFXVolume: 1
 --- !u!1001 &5228128795133299587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,20 +58,60 @@ PrefabInstance:
     m_TransformParent: {fileID: 200344417963832484}
     m_Modifications:
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <music>k__BackingField.Path
+      value: event:/Song
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <ambience>k__BackingField.Path
+      value: event:/Ambience/Lab
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <music>k__BackingField.Guid.Data1
+      value: 1516212063
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <music>k__BackingField.Guid.Data2
+      value: 1175223113
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <music>k__BackingField.Guid.Data3
+      value: 1591868595
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <music>k__BackingField.Guid.Data4
+      value: 1153290327
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data1
+      value: -522030723
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data2
+      value: 1209538213
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data3
+      value: 1109128864
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
+      propertyPath: <ambience>k__BackingField.Guid.Data4
+      value: -590554199
+      objectReference: {fileID: 0}
+    - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <runSound>k__BackingField.Guid.Data1
-      value: -966328283
+      value: 276956526
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <runSound>k__BackingField.Guid.Data2
-      value: 1126046497
+      value: 1274564073
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <runSound>k__BackingField.Guid.Data3
-      value: 921980327
+      value: -1345342839
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <runSound>k__BackingField.Guid.Data4
-      value: 1776453785
+      value: 683144027
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <overheatedSound>k__BackingField.Path
@@ -75,19 +119,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <walkSound>k__BackingField.Guid.Data1
-      value: -284185514
+      value: -780674943
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <walkSound>k__BackingField.Guid.Data2
-      value: 1321264467
+      value: 1288241900
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <walkSound>k__BackingField.Guid.Data3
-      value: -1290315888
+      value: 1870120832
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <walkSound>k__BackingField.Guid.Data4
-      value: -1590979006
+      value: -2041319249
       objectReference: {fileID: 0}
     - target: {fileID: 265493262105776849, guid: 59f228d52223cd349aa00dfea12fb7e9, type: 3}
       propertyPath: <overheatingSound>k__BackingField.Path
