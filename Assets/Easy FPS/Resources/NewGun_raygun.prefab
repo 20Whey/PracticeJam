@@ -1270,6 +1270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada4b79e68d5ee14c940c1e04802d0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bull: {fileID: 0}
+  warningBulletsFired: 0
   maxBulletsFired: 5
   overheatCooldownTime: 5
 --- !u!1 &142906
@@ -3520,7 +3522,6 @@ GameObject:
   - component: {fileID: 9181403154148251064}
   - component: {fileID: 7543398360746365711}
   - component: {fileID: 244202826507617644}
-  - component: {fileID: 6043782800577503344}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -3571,7 +3572,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860a38bcf1fe7ce4987fd7dfa4d857b5, type: 2}
+  - {fileID: 2100000, guid: 96df14ce3e90c3a4caacb4a85d5f06ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3593,27 +3594,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6043782800577503344
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2326606247574153146}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2466229378078249444
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,7 +3688,6 @@ GameObject:
   - component: {fileID: 5368780321193336247}
   - component: {fileID: 8982372321915947325}
   - component: {fileID: 555385085368439086}
-  - component: {fileID: 2624136774174419951}
   m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -3759,7 +3738,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96df14ce3e90c3a4caacb4a85d5f06ee, type: 2}
+  - {fileID: 2100000, guid: 860a38bcf1fe7ce4987fd7dfa4d857b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3781,27 +3760,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2624136774174419951
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2999555213934970920}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3652084248532790313
 GameObject:
   m_ObjectHideFlags: 0
@@ -3932,6 +3890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overheatWeapon: {fileID: 2912464639103225412}
   minMaxRotationAngle: 40
+  bulletType: {fileID: 0}
 --- !u!1 &4585341058759649777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overheatWeapon: {fileID: 2912464639103225412}
   minMaxRotationAngle: 40
+  bulletType: {fileID: 0}
 --- !u!1 &9208302282855638428
 GameObject:
   m_ObjectHideFlags: 0

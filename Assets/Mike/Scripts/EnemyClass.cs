@@ -34,13 +34,12 @@ public class EnemyClass : MonoBehaviour
 	{
 		enemyParent = gameObject.transform.parent.gameObject;
 		enemyManager = FindObjectOfType<EnemyManager>();
-		playerPosition = FindObjectOfType<PlayerMovementScript>().gameObject.transform;
-
-		enemyManager.enemies.Add(enemyParent);
 	}
 
 	void OnEnable()
 	{
+		playerPosition = FindObjectOfType<PlayerMovementScript>().gameObject.transform;
+		enemyManager.enemies.Add(enemyParent);
 		oldAge = 0;
 		youngAge = 0;
 	}

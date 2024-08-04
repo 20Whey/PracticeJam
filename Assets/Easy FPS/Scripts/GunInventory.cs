@@ -177,15 +177,6 @@ public class GunInventory : MonoBehaviour {
 	 * Unity buil-in method to draw GUI.
 	 * From here I am listing thourhg guns I have and drawing corresponding images on the sceen.
 	 */
-	void OnGUI(){
-
-		if(currentGun){
-			for(int i = 0; i < gunsIHave.Count; i++){
-				DrawCorrespondingImage(i);
-			}
-		}
-
-	}
 
 	[Header("GUI Gun preview variables")]
 	[Tooltip("Weapon icons style to pick.")]
@@ -201,38 +192,6 @@ public class GunInventory : MonoBehaviour {
 	 * so it will fitthe gun image to our current gun or guns we have.
 	 * The curent gun selected image has their image slightly enlared for some value.
 	 */
-	void DrawCorrespondingImage(int _number){
-
-		string deleteCloneFromName = currentGun.name.Substring(0,currentGun.name.Length - 7);
-
-		if(menuStyle == MenuStyle.horizontal){
-			if(deleteCloneFromName == gunsIHave[_number]){
-				GUI.DrawTexture(new Rect(vec2(beginPosition).x +(_number*position_x(spacing)),vec2(beginPosition).y,//position variables
-					vec2(size).x, vec2(size).y),//size
-					icons[_number]);
-			}
-			else{			
-				GUI.DrawTexture(new Rect(vec2(beginPosition).x +(_number*position_x(spacing) + 10),vec2(beginPosition).y + 10,//position variables
-					vec2(size).x - 20, vec2(size).y- 20),//size
-					icons[_number]);
-			}
-		}
-		else if(menuStyle == MenuStyle.vertical){
-			if(deleteCloneFromName == gunsIHave[_number]){
-				GUI.DrawTexture(new Rect(vec2(beginPosition).x,vec2(beginPosition).y +(_number*position_y(spacing)),//position variables
-					vec2(size).x, vec2(size).y),//size
-					icons[_number]);
-			}
-			else{			
-				GUI.DrawTexture(new Rect(vec2(beginPosition).x,vec2(beginPosition).y + 10  +(_number*position_y(spacing)),//position variables
-					vec2(size).x - 20, vec2(size).y- 20),//size
-					icons[_number]);
-			}
-		}
-
-
-
-	}
 
 	/*
 	 * Call this method when player dies.
