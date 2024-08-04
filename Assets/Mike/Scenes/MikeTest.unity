@@ -160,7 +160,6 @@ MonoBehaviour:
   oldPrefab: {fileID: 61785149904921120, guid: 1914e2e3b6acc954c9954ed041bfe2d2, type: 3}
   oldRagdollPrefab: {fileID: 61785149904921120, guid: ce5e7ecebdd9de8489b3568c6bde5399, type: 3}
   youngRagdollPrefab: {fileID: 61785149904921120, guid: dc7eccaee19f9d34d88be577c493899c, type: 3}
-  enemySpawners: []
 --- !u!4 &72116920
 Transform:
   m_ObjectHideFlags: 0
@@ -336,15 +335,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: gunsIHave.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
-      propertyPath: gunsIHave.Array.data[0]
-      value: NewGun_raygun
-      objectReference: {fileID: 0}
-    - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
-      propertyPath: gunsIHave.Array.data[1]
-      value: 
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: gunsIHave.Array.data[2]
@@ -356,7 +347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698298358523510554, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.59
+      value: 24.44
       objectReference: {fileID: 0}
     - target: {fileID: 2698298358523510554, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: m_LocalPosition.y
@@ -364,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698298358523510554, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.17
+      value: 14.31
       objectReference: {fileID: 0}
     - target: {fileID: 2698298358523510554, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: m_LocalRotation.w
@@ -458,6 +449,10 @@ PrefabInstance:
     - target: {fileID: 5472727307270641775, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684713580003605122, guid: fb026c11809e53b4284b6ca9d43e3801, type: 3}
+      propertyPath: musicVolume
+      value: 0.809
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -852,11 +847,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3771158110617328035, guid: b5308af591c1a7044aceaa7c3aace773, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 25.57
       objectReference: {fileID: 0}
     - target: {fileID: 3771158110617328035, guid: b5308af591c1a7044aceaa7c3aace773, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 27.8
       objectReference: {fileID: 0}
     - target: {fileID: 3771158110617328035, guid: b5308af591c1a7044aceaa7c3aace773, type: 3}
       propertyPath: m_LocalPosition.x
@@ -864,11 +859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3771158110617328035, guid: b5308af591c1a7044aceaa7c3aace773, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.51
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3771158110617328035, guid: b5308af591c1a7044aceaa7c3aace773, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.36
+      value: 20.2
       objectReference: {fileID: 0}
     - target: {fileID: 3771158110617328035, guid: b5308af591c1a7044aceaa7c3aace773, type: 3}
       propertyPath: m_LocalRotation.w
