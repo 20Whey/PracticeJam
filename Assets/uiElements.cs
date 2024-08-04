@@ -8,6 +8,9 @@ public class uiElements : MonoBehaviour
 {
     public GameObject enemyManagerScript;
     public GameObject playerCharacterScript;
+    public GameObject youngerText;
+    public GameObject olderText;
+    public GameObject bulletTypeScript;
 
     public TextMeshProUGUI waveTimer;
     public TextMeshProUGUI timer;
@@ -34,7 +37,25 @@ public class uiElements : MonoBehaviour
         healthNum = playerCharacterScript.GetComponent<PlayerMovementScript>().currentHealth;
         health.text = healthNum.ToString();
 
-        
+        //Bullet Type
+        GameObject bullet = bulletTypeScript.GetComponent<GunScript>().bullet;
+
+        if (bullet != null)
+        {
+
+
+            if (bullet.name == "DeAgingBullet")
+            {
+                olderText.SetActive(true);
+                youngerText.SetActive(false);
+            }
+
+            else if (bullet.name == "AgingBullet")
+            {
+                olderText.SetActive(false);
+                youngerText.SetActive(true);
+            }
+        }
     }
 
 }
