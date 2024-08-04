@@ -115,9 +115,6 @@ public class GunScript : MonoBehaviour
     void FixedUpdate()
     {
         RotationGun();
-
-        MeeleAnimationsStates();
-
         /*
 		 * Changing some values if we are aiming, like sensitity, zoom racion and position of the waepon.
 		 */
@@ -216,13 +213,7 @@ public class GunScript : MonoBehaviour
 	 * Checking if meeleAttack is already running.
 	 * If we are not reloading we can trigger the MeeleAttack animation from the IENumerator.
 	 */
-    void MeeleAnimationsStates()
-    {
-        if (handsAnimator) {
-            meeleAttack = handsAnimator.GetCurrentAnimatorStateInfo(0).IsName(meeleAnimationName);
-            aiming = handsAnimator.GetCurrentAnimatorStateInfo(0).IsName(aimingAnimationName);
-        }
-    }
+
     /*
 	* User inputs meele attack with Q in keyboard start the coroutine for animation and damage attack.
 	*/
@@ -575,12 +566,6 @@ public class GunScript : MonoBehaviour
     {
 
         if (handsAnimator) {
-
-            reloading = handsAnimator.GetCurrentAnimatorStateInfo(0).IsName(reloadAnimationName);
-
-            handsAnimator.SetFloat("walkSpeed", pmS.currentSpeed);
-            handsAnimator.SetBool("aiming", Input.GetButton("Fire2"));
-            handsAnimator.SetInteger("maxSpeed", pmS.maxSpeed);
             if (Input.GetKeyDown(KeyCode.R) && pmS.maxSpeed < 5 && !reloading && !meeleAttack/* && !aiming*/) {
                 StartCoroutine("Reload_Animation");
             }
