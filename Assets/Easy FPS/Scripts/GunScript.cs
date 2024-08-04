@@ -581,9 +581,9 @@ public class GunScript : MonoBehaviour
             handsAnimator.SetFloat("walkSpeed", pmS.currentSpeed);
             handsAnimator.SetBool("aiming", Input.GetButton("Fire2"));
             handsAnimator.SetInteger("maxSpeed", pmS.maxSpeed);
-            //if (Input.GetKeyDown(KeyCode.R) && pmS.maxSpeed < 5 && !reloading && !meeleAttack/* && !aiming*/) {
-            //  StartCoroutine("Reload_Animation");
-            //}
+            if (Input.GetKeyDown(KeyCode.R) && pmS.maxSpeed < 5 && !reloading && !meeleAttack/* && !aiming*/) {
+              StartCoroutine("Reload_Animation");
+            }
         }
 
     }
