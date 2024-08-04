@@ -80,7 +80,6 @@ public class OverheatWeapon : MonoBehaviour
     {
         switch (bull.name) {
             case "AgeBullet":
-                Debug.Log("A");
 
                 if (currentBulletsFired <= maxBulletsFired) {
                     currentBulletsFired++;
@@ -88,7 +87,7 @@ public class OverheatWeapon : MonoBehaviour
 
                     HandleOverheatSoundPositive();
 
-                    if (currentBulletsFired == 5) {
+                    if (currentBulletsFired > 5) {
                         OnWeaponOverheated?.Invoke(bulletType);
                         StartCoroutine(OverheatCooldown(overheatCooldownTime));
                     }
@@ -96,7 +95,6 @@ public class OverheatWeapon : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("B");
                 if (currentBulletsFired >= -maxBulletsFired) {
                     currentBulletsFired--;
                     OnBulletFired?.Invoke(currentBulletsFired, 1f);
