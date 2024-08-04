@@ -18,9 +18,12 @@ public class handleSelf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        countdown = 4f;
+    countdown = 4f;
     chosenCoverPoint = null;
     agent = gameObject.transform.parent.GetComponent<NavMeshAgent>(); 
+
+    pl = GameObject.Find("PlayerCharacter").transform;
+
     }
 
     // Update is called once per frame
@@ -59,12 +62,15 @@ public class handleSelf : MonoBehaviour
     List<GameObject> toSort = GameObject.FindGameObjectsWithTag("Barr").ToList();
         return toSort.OrderBy(Barrier => Vector3.Distance(gameObject.transform.position, Barrier.transform.position)).ToList();
     }
-   private List<Transform> getAllChilderen(GameObject parent, int num){
+   private List<Transform> getAllChilderen(GameObject parent, int possiblePoints){
     List<Transform> lsOfChild = new List<Transform>();
-   for(int i = 0; i < num; i++){
-    lsOfChild.Add(parent.transform.GetChild(i));
-   // Debug.Log(parent.transform.GetChild(i));
-   }
+    for(var i = 0; i < parent.transform.childCount; i++){
+    if (parent.transform.GetChild(i) != null){
+        lsOfChild.Add(parent.transform.GetChild(i));
+    }
+    
+    }
+
     return lsOfChild.OrderBy(child => Vector3.Distance(gameObject.transform.position, child.position)).ToList();
 }
 
