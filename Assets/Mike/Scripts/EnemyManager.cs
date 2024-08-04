@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
 	[SerializeField] public List<GameObject> enemies = new List<GameObject>();
-	[SerializeField] private int waveCount = 1;
+	[SerializeField] public int waveCount = 1;
 	public float statMultiplier = 0.5f;
 	public GameObject youngPrefab;
 	public GameObject oldPrefab;
