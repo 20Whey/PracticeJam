@@ -31,7 +31,7 @@ public class handleEnemies : MonoBehaviour
 				{
 					TakeAction(gamOb);
 					gamOb.GetComponent<handleSelf>().isPerformingAction = true;
-					Debug.Log(gamOb.GetComponent<handleSelf>().lastState);
+					//Debug.Log(gamOb.GetComponent<handleSelf>().lastState);
 				}
 			}
 		}

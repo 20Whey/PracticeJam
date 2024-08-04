@@ -346,6 +346,8 @@ public class GunScript : MonoBehaviour
     [HideInInspector] public GameObject bulletSpawnPlace;
     [Tooltip("Bullet prefab that this waepon will shoot.")]
     public GameObject bullet;
+    public GameObject ageBulletPF;
+    public GameObject deAgeBulletPF;
     [Tooltip("Rounds per second if weapon is set to automatic rafal.")]
     public float roundsPerSecond;
     private float waitTillNextFire;
@@ -448,7 +450,7 @@ public class GunScript : MonoBehaviour
 
                 int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
                 if (bullet) {
-                    Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
+                    ObjectPoolManager.SpawnObject(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation, ObjectPoolManager.PoolType.Projectiles);
                     OnBulletShot?.Invoke();
                 } else
                     print("Missing the bullet prefab");
@@ -485,50 +487,15 @@ public class GunScript : MonoBehaviour
     public float reloadChangeBulletsTime;
     IEnumerator Reload_Animation()
     {
-        if (bulletsIHave > 0 && bulletsInTheGun < amountOfBulletsPerLoad && !reloading/* && !aiming*/) {
-
-            /*if (reloadSound_source.isPlaying == false && reloadSound_source != null) {
-                if (reloadSound_source)
-                    reloadSound_source.Play();
-                else
-                    print("'Reload Sound Source' missing.");
-            }*/
-
-
-            handsAnimator.SetBool("reloading", true);
-            yield return new WaitForSeconds(0.5f);
-            handsAnimator.SetBool("reloading", false);
-
-
-
-            yield return new WaitForSeconds(reloadChangeBulletsTime - 0.5f);//minus ovo vrijeme cekanja na yield
-            if (meeleAttack == false && pmS.maxSpeed != runningSpeed) {
-                /* //print ("tu sam");
-                 if (player.GetComponent<PlayerMovementScript>()._freakingZombiesSound)
-                     player.GetComponent<PlayerMovementScript>()._freakingZombiesSound.Play();
-                 else
-                     print("Missing Freaking Zombies Sound");*/
-
-                if (bulletsIHave - amountOfBulletsPerLoad >= 0) {
-                    bulletsIHave -= amountOfBulletsPerLoad - bulletsInTheGun;
-                    bulletsInTheGun = amountOfBulletsPerLoad;
-                } else if (bulletsIHave - amountOfBulletsPerLoad < 0) {
-                    float valueForBoth = amountOfBulletsPerLoad - bulletsInTheGun;
-                    if (bulletsIHave - valueForBoth < 0) {
-                        bulletsInTheGun += bulletsIHave;
-                        bulletsIHave = 0;
-                    } else {
-                        bulletsIHave -= valueForBoth;
-                        bulletsInTheGun += valueForBoth;
-                    }
-                }
-            } else {
-                /*reloadSound_source.Stop();
-
-                print("Reload interrupted via meele attack");*/
-            }
-
-        }
+        if(bullet == deAgeBulletPF)
+		{
+            bullet = ageBulletPF;
+		}
+		else
+		{
+            bullet = deAgeBulletPF;
+		}
+        yield return new WaitForSeconds(2f);
     }
 
     /*
