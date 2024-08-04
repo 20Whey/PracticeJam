@@ -1270,6 +1270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada4b79e68d5ee14c940c1e04802d0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bull: {fileID: 0}
+  warningBulletsFired: 0
   maxBulletsFired: 5
   overheatCooldownTime: 5
 --- !u!1 &142906
@@ -3571,7 +3573,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 860a38bcf1fe7ce4987fd7dfa4d857b5, type: 2}
+  - {fileID: 2100000, guid: 96df14ce3e90c3a4caacb4a85d5f06ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3759,7 +3761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96df14ce3e90c3a4caacb4a85d5f06ee, type: 2}
+  - {fileID: 2100000, guid: 860a38bcf1fe7ce4987fd7dfa4d857b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3932,6 +3934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overheatWeapon: {fileID: 2912464639103225412}
   minMaxRotationAngle: 40
+  bulletType: {fileID: 0}
 --- !u!1 &4585341058759649777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4515,6 +4518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overheatWeapon: {fileID: 2912464639103225412}
   minMaxRotationAngle: 40
+  bulletType: {fileID: 0}
 --- !u!1 &9208302282855638428
 GameObject:
   m_ObjectHideFlags: 0
