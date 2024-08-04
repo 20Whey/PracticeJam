@@ -45,6 +45,8 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);
             oldEnemyCount += 1;
         }
+        youngEnemyCount = 0;
+        oldEnemyCount = 0;
     }
 
     Vector3 GetRandomSpawnPosition()
