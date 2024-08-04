@@ -11,25 +11,40 @@ public class EnemyManager : MonoBehaviour
 	public GameObject oldPrefab;
 	public GameObject oldRagdollPrefab;
 	public GameObject youngRagdollPrefab;
+	[SerializeField] private EnemySpawner[] enemySpawners;
+
+	void Awake()
+	{
+		enemySpawners = FindObjectsByType<EnemySpawner>(FindObjectsSortMode.None);
+	}
 
 	public void checkWaveClear()
-	{ 
+	{
+		Debug.Log(enemies.Count);
 		if(enemies.Count == 0)
 		{
 			AdvanceWave(waveCount);
-			statMultiplier *= waveCount;
+			waveCount += 1;
 		}
 	}
 
 	private void AdvanceWave(int waveCount)
 	{
+		StopAllCoroutines();
+		foreach (EnemySpawner enemySpawner in enemySpawners)
+		{
+			StartCoroutine(enemySpawner.SpawnEnemies());
+			Debug.Log("spawning");
+		}
 		foreach (GameObject enemy in enemies)
 		{
 			EnemyClass enemyStats = enemy.GetComponent<EnemyClass>();
 			enemyStats.maxAge = (int)(enemyStats.maxAge * statMultiplier);
 			enemyStats.enemyDamage = (int)(enemyStats.enemyDamage * statMultiplier);
 			enemyStats.movementSpeed *= statMultiplier;
+			Debug.Log("stat changes");
 		}
+		statMultiplier *= waveCount;
 	}
 
 	public void SwitchObject(GameObject objectToSwitch, string objectToSwitchTo)
