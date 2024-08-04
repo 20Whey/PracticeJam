@@ -34,7 +34,7 @@ public class BulletScript : MonoBehaviour {
 				}
 				if (hit.transform.tag == "Enemy")
 				{
-					hit.transform.GetChild(1).gameObject.GetComponent<EnemyClass>().TakeDamage(2, "age");
+					hit.transform.GetChild(0).gameObject.GetComponent<EnemyClass>().TakeDamage(2, "age");
 					Destroy(gameObject);
 				}
 			}		

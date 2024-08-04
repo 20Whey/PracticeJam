@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3333498}
   - component: {fileID: 6502892}
   - component: {fileID: 2341860}
-  - component: {fileID: 11440490}
+  - component: {fileID: 716239726782562376}
+  - component: {fileID: 5183045195836331059}
   m_Layer: 2
   m_Name: Bullet
   m_TagString: Untagged
@@ -106,7 +107,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &11440490
+--- !u!114 &716239726782562376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,13 +116,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 128836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e3d39d01a5946499fa8b6b5dc1b00f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e5d6542ffb8ee24dbf0e2d7f5579984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 100000
-  decalHitWall: {fileID: 179232, guid: b2ac1383a96f94a50b7ed458be173bbd, type: 3}
-  floatInfrontOfWall: 0.1
-  bloodEffect: {fileID: 1013274939826982, guid: ffbf169ab9dcfdc45ae14010bc82a6b2, type: 3}
-  ignoreLayer:
+  bulletRB: {fileID: 5183045195836331059}
+  bulletSpeed: 5
+  bulletDamage: 1
+  damageType: 0
+  destroyTime: 1
+--- !u!54 &5183045195836331059
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128836}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 //using UnityStandardAssets.ImageEffects;
 
@@ -8,6 +9,9 @@ public enum GunStyles
 }
 public class GunScript : MonoBehaviour
 {
+
+    public event Action OnBulletShot;
+
     [Tooltip("Selects type of waepon to shoot rapidly or one bullet per click.")]
     public GunStyles currentStyle;
     [HideInInspector]
@@ -78,6 +82,7 @@ public class GunScript : MonoBehaviour
     private float secondCameraZoomVelocity;
 
     private Vector2 gunFollowTimeVelocity;
+
 
     /*
 	Update loop calling for methods that are descriped below where they are initiated.
@@ -328,8 +333,8 @@ public class GunScript : MonoBehaviour
     public void RecoilMath()
     {
         currentRecoilZPos -= recoilAmount_z;
-        currentRecoilXPos -= (Random.value - 0.5f) * recoilAmount_x;
-        currentRecoilYPos -= (Random.value - 0.5f) * recoilAmount_y;
+        currentRecoilXPos -= (UnityEngine.Random.value - 0.5f) * recoilAmount_x;
+        currentRecoilYPos -= (UnityEngine.Random.value - 0.5f) * recoilAmount_y;
         mls.wantedCameraXRotation -= Mathf.Abs(currentRecoilYPos * gunPrecision);
         mls.wantedYRotation -= (currentRecoilXPos * gunPrecision);
 
@@ -419,26 +424,33 @@ public class GunScript : MonoBehaviour
         AudioManager.instance.PlayOneShot(FMODEvents.instance.hitMarkerSound, Pos);
     }
 
+
     [Tooltip("Array of muzzel flashes, randmly one will appear after each bullet.")]
     public GameObject[] muzzelFlash;
     [Tooltip("Place on the gun where muzzel flash will appear.")]
     public GameObject muzzelSpawn;
     private GameObject holdFlash;
     private GameObject holdSmoke;
+
+    private bool isOverheated;
+
     /*
 	 * Called from Shooting();
 	 * Creates bullets and muzzle flashes and calls for Recoil.
 	 */
     private void ShootMethod()
     {
+        if (isOverheated) return;
+
         if (waitTillNextFire <= 0 && !reloading && pmS.maxSpeed < 5) {
 
             if (bulletsInTheGun > 0) {
 
-                int randomNumberForMuzzelFlash = Random.Range(0, 5);
-                if (bullet)
+                int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
+                if (bullet) {
                     Instantiate(bullet, bulletSpawnPlace.transform.position, bulletSpawnPlace.transform.rotation);
-                else
+                    OnBulletShot?.Invoke();
+                } else
                     print("Missing the bullet prefab");
                 holdFlash = Instantiate(muzzelFlash[randomNumberForMuzzelFlash], muzzelSpawn.transform.position /*- muzzelPosition*/, muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90)) as GameObject;
                 holdFlash.transform.parent = muzzelSpawn.transform;
@@ -459,7 +471,10 @@ public class GunScript : MonoBehaviour
 
     }
 
-
+    public void ChangeOverheated(bool isOverheated)
+    {
+        this.isOverheated = isOverheated;
+    }
 
     /*
 	* Reloading, setting the reloading to animator,
@@ -472,7 +487,6 @@ public class GunScript : MonoBehaviour
     {
         if (bulletsIHave > 0 && bulletsInTheGun < amountOfBulletsPerLoad && !reloading/* && !aiming*/) {
 
-            //todo:
             /*if (reloadSound_source.isPlaying == false && reloadSound_source != null) {
                 if (reloadSound_source)
                     reloadSound_source.Play();
@@ -489,9 +503,11 @@ public class GunScript : MonoBehaviour
 
             yield return new WaitForSeconds(reloadChangeBulletsTime - 0.5f);//minus ovo vrijeme cekanja na yield
             if (meeleAttack == false && pmS.maxSpeed != runningSpeed) {
-                //TODO:
-                /*if (player.GetComponent<PlayerMovementScript>()._freakingZombiesSound)
-                    player.GetComponent<PlayerMovementScript>()._freakingZombiesSound.Play();*/
+                /* //print ("tu sam");
+                 if (player.GetComponent<PlayerMovementScript>()._freakingZombiesSound)
+                     player.GetComponent<PlayerMovementScript>()._freakingZombiesSound.Play();
+                 else
+                     print("Missing Freaking Zombies Sound");*/
 
                 if (bulletsIHave - amountOfBulletsPerLoad >= 0) {
                     bulletsIHave -= amountOfBulletsPerLoad - bulletsInTheGun;
@@ -507,9 +523,9 @@ public class GunScript : MonoBehaviour
                     }
                 }
             } else {
-                reloadSound_source.Stop();
+                /*reloadSound_source.Stop();
 
-                print("Reload interrupted via meele attack");
+                print("Reload interrupted via meele attack");*/
             }
 
         }
@@ -609,5 +625,4 @@ public class GunScript : MonoBehaviour
     public string reloadAnimationName = "Player_Reload";
     public string aimingAnimationName = "Player_AImpose";
     public string meeleAnimationName = "Character_Malee";
-
 }
