@@ -25,7 +25,7 @@ public class OverheatWeapon : MonoBehaviour
 
     float gaugeChange = 0;
 
-    float overheatingVol;
+    float overheatingVol = 1.0f;
 
     public int MaxBulletsFired => maxBulletsFired;
 
@@ -135,7 +135,11 @@ public class OverheatWeapon : MonoBehaviour
 
         if (currentBulletsFired == maxBulletsFired) {
             overheatSound.stop(STOP_MODE.ALLOWFADEOUT);
+            StartCoroutine(LerpVolume(1f, 1.0f));
             overheatedSound.start();
+            //float oVolume = 0.0f;
+            //overheatedSound.getVolume(out oVolume);
+            
         }
     }
 
@@ -161,18 +165,15 @@ public class OverheatWeapon : MonoBehaviour
         }
     }
 
-    /*public IEnumerator LerpVolume(float timeToTake, float currentVolume)
+    public IEnumerator LerpVolume(float timeToTake, float currentVolume)
     {
-        //float elapsedTime = 0f;
-        float value = currentVolume;
-        while (value > 0) {
-            currentVolume = Mathf.Lerp(currentVolume, 0.0f, Time.deltaTime / timeToTake);
-            overheatSound.setParameterByName("Volume", currentVolume);
-            value -= Time.deltaTime / timeToTake;
+        while (currentVolume > 0) {
+            currentVolume -= (Time.deltaTime / timeToTake);
+           overheatedSound.setVolume(currentVolume);
             yield return new WaitForEndOfFrame();
         }
-        yield break;
-    }*/
+        yield return null;
+    }
 
     private EventInstance gaugeSound;
     private EventInstance overheatSound;
