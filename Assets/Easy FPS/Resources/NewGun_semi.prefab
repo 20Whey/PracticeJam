@@ -1267,7 +1267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ada4b79e68d5ee14c940c1e04802d0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBulletsFired: 5
+  warningBulletsFired: 3
+  maxBulletsFired: 6
   overheatCooldownTime: 5
 --- !u!1 &142906
 GameObject:
