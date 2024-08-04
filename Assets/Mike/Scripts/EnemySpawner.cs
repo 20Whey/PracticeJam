@@ -31,15 +31,15 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
-    private IEnumerator SpawnEnemies()
+    public IEnumerator SpawnEnemies()
     {
-        while (youngEnemyCount < maxEnemyCount) {
+        while (youngEnemyCount < spawnTemplate.youngEnemiesToSpawn) {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             ObjectPoolManager.SpawnObject(enemyManager.youngPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);
             youngEnemyCount += 1;
         }
-        while (oldEnemyCount < maxEnemyCount) {
+        while (oldEnemyCount < spawnTemplate.oldEnemiesToSpawn) {
             Vector3 spawnPosition = GetRandomSpawnPosition();
             ObjectPoolManager.SpawnObject(enemyManager.oldPrefab, spawnPosition, Quaternion.identity, ObjectPoolManager.PoolType.Enemies);
             yield return new WaitForSeconds(spawnTemplate.enemySpawnDelay);

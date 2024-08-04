@@ -336,7 +336,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: gunsIHave.Array.size
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
+      propertyPath: gunsIHave.Array.data[0]
+      value: NewGun_raygun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
+      propertyPath: gunsIHave.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: gunsIHave.Array.data[2]
