@@ -333,6 +333,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
+      propertyPath: gunsIHave.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2698298358517811156, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
+      propertyPath: gunsIHave.Array.data[2]
+      value: NewGun_raygun
+      objectReference: {fileID: 0}
     - target: {fileID: 2698298358523510554, guid: a4b0e89cbd2ae5046aeffa90b2786616, type: 3}
       propertyPath: m_RootOrder
       value: 1
