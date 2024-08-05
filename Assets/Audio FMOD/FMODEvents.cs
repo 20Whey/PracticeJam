@@ -35,6 +35,18 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Ambience Tracks")]
     [field: SerializeField] public EventReference ambience { get; private set; }
 
+    [field: Header("Enemy Grunts")]
+    [field: SerializeField] public EventReference enemyGruntsSound { get; private set; }
+
+    [field: Header("Enemy Shooting")]
+    [field: SerializeField] public EventReference enemyShotsSound { get; private set; }
+
+    [field: Header("Enemy Moving")]
+    [field: SerializeField] public EventReference enemyMovSound { get; private set; }
+
+    [field: Header("Enemy Aging")]
+    [field: SerializeField] public EventReference enemyAge { get; private set; }
+
 
 
     public static FMODEvents instance { get; private set; }
