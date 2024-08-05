@@ -26,9 +26,9 @@ public class GunScript : MonoBehaviour
 
     [Header("Bullet properties")]
     [Tooltip("Preset value to tell with how many bullets will our waepon spawn aside.")]
-    public float bulletsIHave = 20;
+    public float bulletsIHave = 200;
     [Tooltip("Preset value to tell with how much bullets will our waepon spawn inside rifle.")]
-    public float bulletsInTheGun = 5;
+    public float bulletsInTheGun = 200;
     [Tooltip("Preset value to tell how much bullets can one magazine carry.")]
     public float amountOfBulletsPerLoad = 5;
 
@@ -251,8 +251,6 @@ public class GunScript : MonoBehaviour
             mouseSensitvity_running = startRun;
         }
     }
-
-
     private Vector3 velV;
     [HideInInspector]
     public Transform mainCamera;
@@ -268,8 +266,6 @@ public class GunScript : MonoBehaviour
             (mainCamera.transform.right * (currentGunPosition.x + currentRecoilXPos)) +
             (mainCamera.transform.up * (currentGunPosition.y + currentRecoilYPos)) +
             (mainCamera.transform.forward * (currentGunPosition.z + currentRecoilZPos)), ref velV, 0);
-
-
 
         pmS.cameraPosition = new Vector3(currentRecoilXPos, currentRecoilYPos, 0);
 
