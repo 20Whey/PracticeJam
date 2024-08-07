@@ -22,6 +22,7 @@ public class BulletClass : MonoBehaviour
     {
         bulletRB = gameObject.GetComponent<Rigidbody>();
         _returnToPoolTimer = StartCoroutine(ReturnToPoolDelayed());
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.enemyShotsSound, transform.position);
     }
 
     private void Update()
